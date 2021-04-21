@@ -46,3 +46,23 @@ main {
 .hide {
     display: none;
 }
+
+label {
+    margin-top: 20px;
+}
+
+.text-lg {
+    font-size: 1.5em;
+}
+.text-sm {
+    font-size: 0.89em;
+}
+
+/* ------------------------------------- */
+/* ----------- override styles ---------- */
+/* ------------------------------------- */
+
+.form-control-lg {
+    border-color: blueviolet;
+    border-width: 1px;
+}
