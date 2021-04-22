@@ -78,6 +78,67 @@ let popup_HTML = function (featureObj) {
     return container;
 }
 
-function createPopup(targetSelector){
+function createRecipe(targetSelector, data){
+    const container =  document.querySelector(targetSelector);
 
+    const card = buildDom({
+        type: "div",
+        props: {
+            className: "card"
+        }
+    });
+
+    card.append(buildDom({
+        type: "img",
+        props: {
+            className: "card-img-top",
+            src: data.image
+        }
+    }), buildDom({
+        type: "div",
+        props: {
+            className: "card-body"
+        },
+        children: [
+            {
+                type: "h4",
+                props: {
+                    className: "card-title",
+                    innerHTML: data.recipeName
+                }
+            },{
+                type: "p",
+                props: {
+                    className: "card-text",
+                    innerHTML: `<b>We cook this recipe </b>${data.frequence}`
+                }
+            },{
+                type: "p",
+                props: {
+                    className: "card-text",
+                    innerHTML: `<b>From: </b>${data.fromCity} ${data.fromState} ${data.fromCountry}`
+                }
+            },{
+                type: "p",
+                props: {
+                    className: "card-text",
+                    innerHTML: `<b>History: </b>${data.history}`
+                }
+            },{
+                type: "p",
+                props: {
+                    className: "card-text",
+                    innerHTML: `<b>Why it's important: </b>${data.significe}`
+                }
+            },{
+                type: "p",
+                props: {
+                    className: "card-text",
+                    innerHTML: `<b>Changes: </b>${data.changes}`
+                }
+            }
+        ]
+    }));
+
+    container.append(card);
 }

@@ -15,19 +15,26 @@ header h1 {
     margin: 0;
 }
 
-.progress {
+.progress-anim {
     width: 50%;
     height: 100%;
-    background-color: antiquewhite;
+    background-color: #eee;
 }
+
 .form {
     width: 45%;
     height: 100%;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 80px;
 }
+
 
 main {
     height: calc(100vh - 96px);
+    max-height: 790px;
 }
 
 /* ------------------------------------- */
@@ -41,7 +48,6 @@ main {
     max-width: 360px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40%;
 }
 .chess {
     position: absolute;
@@ -49,7 +55,7 @@ main {
     width: 100px;
     background: blueviolet;
     bottom: 40px;
-    left: 146px;
+    left: 130px;
     z-index: 100;
 }
 .chess-base {
@@ -64,13 +70,12 @@ main {
     bottom: 0;
     position: absolute;
     display: flex;
-    padding-left: 140px;
-    padding-right: 140px
 }
 .chess-base-position {
-    background: white;
+    background: rgb(215, 168, 127);
     height: 40px;
     margin: 8px;
+    margin-bottom: 30px;
     flex: 0 0 132px;
 }
 .blank-space {
@@ -78,6 +83,13 @@ main {
     height: 40px;
     flex: 0 0 132px;
 }
+
+/* ------------------------------------- */
+/* ------------ form styles ------------ */
+/* ------------------------------------- */
+
+
+
 
 /* ------------------------------------- */
 /* ----------- public styles ----------- */
@@ -103,6 +115,7 @@ label {
 .text-lg {
     font-size: 1.5em;
 }
+
 .text-sm {
     font-size: 0.89em;
 }
@@ -114,4 +127,29 @@ label {
 .form-control-lg {
     border-color: blueviolet;
     border-width: 1px;
+}
+
+
+/* ------------------------------------- */
+/* ----- override splide styles ----- */
+/* ------------------------------------- */
+.splide__arrow--next,
+.splide__arrow--prev {
+    display: none;
+}
+
+.splide__pagination {
+    bottom: 0;
+}
+
+.splide__pagination__page {
+    pointer-events: none;
+}
+
+.splide__track {
+    pointer-events: none;
+}
+
+.splide__pagination__page.is-active {
+    background-color: blueviolet;
 }

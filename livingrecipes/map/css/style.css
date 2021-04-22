@@ -40,13 +40,84 @@ header {
     font-size: 2em;
 }
 
+/*------------------------------------------*/
+/*---------------- header ------------------*/
+/*------------------------------------------*/
+
+.search-bar {
+    padding-top: 10px;
+}
+.search-bar input {
+    width: 100%;
+    border-radius: 24px;
+}
+.search-bar .search-icon {
+    position: absolute;
+    right: 16px
+}
+
+.filter-bar {
+    padding-top: 10px;
+    overflow-x: auto;
+}
+.filter-bar button {
+    border: 1px solid #888;
+    border-radius: 15px;
+    margin: 4px;
+}
+
+
+/*------------------------------------------*/
+/*------------- popup window ---------------*/
+/*------------------------------------------*/
+
+.pop-up {
+    height: calc(100% - 68px);
+    top: 68px;
+    left: 16px;
+    right: 16px;
+    background: #ffffff;
+    position: absolute;
+    z-index: 1000;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: 4px 4px 16px rgba(0,0,0,0.15);
+    padding: 16px;
+}
+
+.pop-up .card {
+    width: 100% !important;
+    margin: 0;
+    height: 100%;
+    overflow: auto;
+}
+
+.pop-up .close {
+    position: absolute;
+    background: #ffcc00;
+    height: 44px;
+    width: 44px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    opacity: 1;
+}
+
+/*------------------------------------------*/
+/*---------------- nav bar -----------------*/
+/*------------------------------------------*/
 .bottom-bar {
     position: fixed;
-    height: 100px;
-    width: 100%;
-    bottom: 0;
+    height: 60px;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
     background: white;
-    z-index: 1000;
+    z-index: 999;
+    border-radius: 12px;
+    box-shadow: 4px 4px 16px rgba(0,0,0,0.15);
 }
 
 aside {
@@ -281,7 +352,9 @@ ul {
     background: rgba(0,0,0,0.15); 
     border-radius: 10px;
   }
-  
- .pop-up {
-     
- }
+
+.hide {
+    display: none;
+}
+ /* Search bar */
+ 

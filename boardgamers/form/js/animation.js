@@ -6,4 +6,5 @@ var splide = new Splide( '.splide', {
 	height   : '9rem',
 	trimSpace: false,
 	autoWidth: true,
+    focus: 'center'
 } ).mount();
