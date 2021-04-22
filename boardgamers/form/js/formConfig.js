@@ -121,6 +121,8 @@ const states = `<option value=" ">Outside US</option>
 
 const formContainer = document.querySelector(".form-container");
 const questionInputs = document.querySelectorAll(".question-input");
+const btnArrowRight = document.querySelector(".splide__arrow--next");
+const btnArrowLeft = document.querySelector(".splide__arrow--prev");
 
 for ( let i = 0; i < questionInputs.length; i++) {
     questionInputs[i].addEventListener("change", e => {
@@ -159,8 +161,10 @@ function validate(inputBox) {
  function switchQuestion(i, order) {
     if (order === 1) {
         allQuestions[i - 1].classList.add("hide");
+        btnArrowRight.click();
     } else if (order === -1) {
         allQuestions[i + 1].classList.add("hide"); 
+        btnArrowLeft.click();
     }
     allQuestions[i].classList.remove("hide");
 }

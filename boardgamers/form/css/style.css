@@ -31,6 +31,55 @@ main {
 }
 
 /* ------------------------------------- */
+/* --------------- chess --------------- */
+/* ------------------------------------- */
+
+.chess-container {
+    position: relative;
+    height: 20vh;
+    width: 90%;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40%;
+}
+.chess {
+    position: absolute;
+    height: 200px;
+    width: 100px;
+    background: blueviolet;
+    bottom: 40px;
+    left: 146px;
+    z-index: 100;
+}
+.chess-base {
+    width: 100%;
+    position: absolute;
+    height: 100px;
+    bottom: 0;
+    overflow: auto;
+}
+.chess-base-box {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    display: flex;
+    padding-left: 140px;
+    padding-right: 140px
+}
+.chess-base-position {
+    background: white;
+    height: 40px;
+    margin: 8px;
+    flex: 0 0 132px;
+}
+.blank-space {
+    width: 140px;
+    height: 40px;
+    flex: 0 0 132px;
+}
+
+/* ------------------------------------- */
 /* ----------- public styles ----------- */
 /* ------------------------------------- */
 
@@ -59,7 +108,7 @@ label {
 }
 
 /* ------------------------------------- */
-/* ----------- override styles ---------- */
+/* ----- override bootstrap styles ----- */
 /* ------------------------------------- */
 
 .form-control-lg {
