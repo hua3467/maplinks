@@ -24,36 +24,6 @@ let coord = [Number(urlParams.get("log")), Number(urlParams.get("lat"))];
 
 console.log(coord);
 
-// Add geolocate control to the map.
-// map.addControl(
-//     new MapboxGeocoder({
-//         accessToken: mapboxgl.accessToken,
-//         mapboxgl: mapboxgl
-//     })
-// );
-// map.addControl(new mapboxgl.FullscreenControl());
-
-// Create icon and popup for SODAA
-// create the popup
-var popup_sodaa = new mapboxgl.Popup({
-    offset: 25
-}).setHTML(
-    `<iframe src="https://player.vimeo.com/video/458829008" width="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen class="sodaa-video"></iframe>
-    <h5>NDSU School of Design, Architecture and Art</h5>
-    <a href="https://www.ndsu.edu/sodaa/" target="_blank" style="color: black">Visit Website</a>`
-);
-
-// create DOM element for the marker of SODAA
-// var el = document.createElement('div');
-// el.id = 'RH_marker';
-
-// create the marker for SODAA
-// new mapboxgl.Marker(el)
-//     .setLngLat([-96.790494, 46.875552])
-//     .setOffset([0, 50])
-//     .setPopup(popup_sodaa) // sets a popup on this marker
-//     .addTo(map);
-
 
 map.on('load', () => {
 
@@ -81,7 +51,8 @@ map.on('load', () => {
         }, 1000)
     }
 
-    loadGreenDots(testData);
+    loadGreenDots(gameData, greenCircles);
+    addListItem(".data-list", gameData);
 });
 
 // const data = db.ref("sodaa_alumni").once("value").then(snapshot => {
@@ -157,46 +128,15 @@ map.on('load', () => {
 //     map.addLayer(greenCircles);
 // });
 
-function loadGreenDots(data){
-    let geoData = {
-        features: [],
-        type: "FeatureCollection"
-    }
-
-    for (id in data) {
-            const feature = {
-                geometry: {
-                    coordinates: [data[id].longtitude, data[id].latitude],
-                    type: "Point"
-                },
-                properties: {
-                    about: data[id].about,
-                    company: data[id].company,
-                    fname: data[id].fname,
-                    lname: data[id].lname,
-                    major: data[id].major,
-                    profileImage: data[id].profileImage,
-                    title: data[id].title,
-                    uid: id,
-                    userCity: data[id].userCity,
-                    userState: data[id].userState,
-                    userCountry: data[id].userCountry,
-                    website: data[id].website,
-                    color: data[id].type === "one" ? "#ffcc00" : "#006633"
-                },
-                type: "Feature"
-            };
-            geoData.features.push(feature);
-        
-    }
+function loadGreenDots(data, pointConfig){
+    let geoData = makeGeoData(data);
 
     map.addSource('people-data', {
         'type': 'geojson',
         'data': geoData
     });
 
-    console.log(geoData);
-    map.addLayer(greenCircles);
+    map.addLayer(pointConfig);
 }
 
 
@@ -223,7 +163,7 @@ map.on('click', 'people-end-points', function (e) {
 
     new Splide('.splide', {
         width: '100%',
-        height: '360px',
+        height: '380px',
         type: 'loop'
     }).mount();
 });

@@ -8,7 +8,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="splide/splide.min.css">
+    <link rel="stylesheet" href="../public/splide/splide.min.css">
     <link href="fontawesome/css/all.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
@@ -29,32 +29,39 @@
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
+    
     <main>
-        <header>
-            <h1>BOARD GAMERS UNITED</h1>
-        </header>
-
-        <div class="tool-bar">
-            <div class="filter">Filter Map</div>
-            <div class="search-bar"></div>
+        <div id="map">
+            <header>
+                <h1>BOARD GAMERS UNITED</h1> 
+                <div class="tool-bar text-right">
+                    <h5>Filter by genres</h5>
+                    <div class="genre-group">
+                        <button class="btn btn-outline-dark btn-sm">Strategy</button>
+                        <button class="btn btn-outline-dark btn-sm">Area control</button>
+                        <button class="btn btn-outline-dark btn-sm">Action Drafting</button>
+                        <button class="btn btn-outline-dark btn-sm">Card Drafting</button>
+                        <button class="btn btn-outline-dark btn-sm">Cooperative</button>
+                        <button class="btn btn-outline-dark btn-sm">Eurogame</button>
+                        <button class="btn btn-outline-dark btn-sm">Party</button>
+                    </div>
+                </div>
+            </header>
         </div>
-
-        <div id="map"></div>
-
-        <div class="socialbar">
-            <div class="social-media">
-                <a href="../form/index.html" target="_blank">
-                    <p class="text-medium">What do you play?</p>
-                    <p class="text-small">Add your experience to the map.</p>
-                </a>
+        <aside>
+            <div class="search-bar d-flex justify-content-center">
+                <input type="text" class="form-fontrol">
+                <a href="#" class="btn search-icon"><i class="fa fa-search"></i></a>
             </div>
-        </div>
-        <div class="side-bar bar-right">Right Bar</div>
+            <div class="data-list"></div>
+        </aside>  
     </main>
+    <div class="btn-add">
+            <a href="../form/index.html" target="_blank"><b>What do you play?</b></a>
+            <p class="text-sm">Add your experience to the map.</p>
+    </div>
 
 
-
-    <script src="./splide/splide.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
@@ -69,7 +76,9 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
 
+    <script src="../public/splide/splide.min.js"></script>
     <script src="../public/js/dbConfig.js"></script>
+    <script src="js/dataHandler.js"></script>
     <script src="js/util.js"></script>
     <script src="js/domUtil.js"></script>
     <script src="js/domBuilder.js"></script>

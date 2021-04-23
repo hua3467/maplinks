@@ -1,79 +1,71 @@
-function addListItem(targetSelector, data) {
+function addListItem(targetSelector, dataSet) {
     const targetContainer = document.querySelector(targetSelector);
-    targetContainer.append(buildDom({
-        type: "li",
-        props: {
-            className: "ppl-card"
-        },
-        children: [
-            {
-                type: "div",
-                props: {
-                    className: "ppl-card-cover",
-                    style: "background: url(${property['image-url']}) rgba(0,0,0,0.15); background-size: cover;background-repeat: no-repeat;background-position: center;"
-                }
-            },
-            {
-                type: "div",
-                props: {
-                    className: "ppl-card-title"
-                },
-                children: [{
-                    type: "p",
-                    props: {
-                        className: "ppl-name",
-                        innerHTML: data.title
-                    }
-                },{
-                    type: "div",
-                    props: {
-                        className: "title-link"
-                    },
-                    children: [{
-                        type: "p",
-                        props: {
-                            className: "ppl-title",
-                            innerHTML: "Title"
-                        }
-                    }, {
-                        type: "a",
-                        props: {
-                            href: parseURL(property.web),
-                            target: "_blank",
-                            innerHTML: "Website"
-                        }
-                    }]
-                }]
-            }
-        ]
-    }));
+
+    dataSet.forEach( data => {
+        targetContainer.append(createCard(data));
+    })
+    
 
 }
 
-let popup_HTML = function (featureObj) {
-    console.log(featureObj);
-    let container =
-        `<div class="splide"><div class="splide__track"><ul class="splide__list">`;
-    featureObj.forEach(feature => {
-
-        // TODO create a HTML slider to be added into popup.
-        let cover = feature.properties['profileImage'] ?
-            `<div class="cover" style="background: url(${feature.properties['profileImage']}) rgba(0,0,0,0.1); background-size: cover;background-repeat: no-repeat;background-position: center; gackground-blend-mode: multiply"></div>` :
-            `<div class="cover" style="background: rgba(0,0,0,0.1);"></div>`;
-        container += `<li class="splide__slide">
-                        <div class="slide-header">
-                            ${cover}
-                            <div class="slide-header-title">
-                                <h4>${feature.properties.fname} ${feature.properties.lname}</h4>
-                                <a href="${parseURL(feature.properties.website)}" target="_blank">${feature.properties.company} <i class="fas fa-external-link-alt"></i></a> | ${feature.properties.userCity}, ${feature.properties.userState} 
-                                </div>
-                            </div>
-                            
-                            <div class="slide-body">
-                            <p>${feature.properties.about}</p>
-                        </div>
-                        </li>`
+function createCard(data){
+    const card = buildDom({
+        type: "div",
+        props: {
+            className: "card row"
+        }
     });
-    container += `</ul></div></div>`
-    return container;
+
+    card.append(buildDom({
+        type: "img",
+        props: {
+            className: "card-img-top",
+            src: data.image
+        }
+    }), buildDom({
+        type: "div",
+        props: {
+            className: "card-body"
+        },
+        children: [
+            {
+                type: "h4",
+                props: {
+                    className: "card-title",
+                    innerHTML: data.gameName
+                }
+            },{
+                type: "p",
+                props: {
+                    className: "card-text",
+                    innerHTML: data.memory
+                }
+            },{
+                type: "p",
+                props: {
+                    className: "card-text",
+                    innerHTML: `${data.userCity} ${data.userState} ${data.userCountry}`
+                }
+            },{
+                type: "p",
+                props: {
+                    className: "card-text",
+                    innerHTML: `${data.genre}`
+                }
+            },{
+                type: "p",
+                props: {
+                    className: "card-text",
+                    innerHTML: `${data.forward}`
+                }
+            },{
+                type: "p",
+                props: {
+                    className: "card-text",
+                    innerHTML: `${data.pitch}`
+                }
+            }
+        ]
+    }));
+    return card;
 }
