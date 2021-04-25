@@ -53,8 +53,8 @@ function uploadData(dataObj) {
     };
     delete clearedData.image;
 
-    const userAddress = `${dataObj.city},${dataObj.state},${dataObj.country}`
-    console.log(userAddress);
+    const userAddress = `${dataObj.userCity},${dataObj.userState},${dataObj.userCountry}`
+
     geocode(userAddress, (error, {
         coordinates,
         location
@@ -66,8 +66,8 @@ function uploadData(dataObj) {
         clearedData["coordinates"] = coordinates;
         clearedData["location"] = location;
         db.ref(dbName + "/" + dataObj.gid).update(clearedData);
-        console.log(clearedData);
-    })
+
+    });
     
 
     if (dataObj.image) {
@@ -80,5 +80,5 @@ function uploadData(dataObj) {
         console.log("You did not add an image. The data is not saved.");
     }
     
-
 };
+

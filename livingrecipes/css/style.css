@@ -357,4 +357,14 @@ ul {
     display: none;
 }
  /* Search bar */
- 
+
+.form-group label {
+    font-size: 0.8em;
+}
+.btn-step-group .btn {
+    margin-right: 8px;
+}
+.bbtn-step-group .btn:last-child {
+    margin-right: 0;
+}
+

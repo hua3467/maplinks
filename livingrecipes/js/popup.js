@@ -11,4 +11,3 @@ navBar.addEventListener("click", e => {
 })
 
 createRecipe(".pop-up", testData[0]);
-

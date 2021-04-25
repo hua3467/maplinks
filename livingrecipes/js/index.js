@@ -72,14 +72,7 @@ map.on('load', () => {
                 essential: true
             });
         }, 500)
-    } else {
-        setTimeout(() => {
-            map.zoomTo(3.7, {
-                duration: 10000,
-                offset: [0, -180]
-            });
-        }, 1000)
-    }
+    } 
 
     loadGreenDots(testData);
 });

@@ -74,8 +74,8 @@
                         spellcheck="false" data-ms-editor="true" rows="3"></textarea>
                     <div class="valid-feedback">This is required.</div>
                 </div>
-                <div class="question hide form-group"><label class="text-lg" for="picture">5. Share a picture of the
-                        game.</label><input name="picture" type="file"
+                <div class="question hide form-group"><label class="text-lg" for="image">5. Share a picture of the
+                        game.</label><input name="image" type="file"
                         class="question-input full-width form-control-lg">
                     <div class="valid-feedback">This is required.</div>
                 </div>
@@ -97,15 +97,15 @@
                 <div class="hide form-group">
                     <label class="text-lg">9. What is your location?</label>
                     <div class="question">
-                        <label for="city" class="text-sm">City</label>
-                        <input name="city"
+                        <label for="userCity" class="text-sm">City</label>
+                        <input name="userCity"
                             class="question-input full-width form-control-lg" type="text" required spellcheck="false"
                             data-ms-editor="true">
                         <div class="valid-feedback">Please enter your city</div>
                     </div>
                     <div class="question">
-                        <label for="state" class="text-sm">State</label>
-                        <select name="state" class="question-input full-width form-control-lg" required>
+                        <label for="userState" class="text-sm">State</label>
+                        <select name="userState" class="question-input full-width form-control-lg" required>
                             <option value=" ">Outside US</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -162,8 +162,8 @@
                         </select>
                         <div class="valid-feedback">Please enter your state</div>
                     </div>
-                    <div class="question"><label for="country" class="text-sm">Country</label><input
-                            name="country" class="question-input full-width form-control-lg" type="text" required
+                    <div class="question"><label for="userCountry" class="text-sm">Country</label><input
+                            name="userCountry" class="question-input full-width form-control-lg" type="text" required
                             spellcheck="false" data-ms-editor="true">
                         <div class="valid-feedback">Please enter your country</div>
                     </div>
@@ -188,6 +188,8 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script> -->
 
 
     <script src="../public/js/dbConfig.js"></script>

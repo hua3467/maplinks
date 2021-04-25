@@ -1,3 +1,48 @@
+const formContainer = document.querySelector(".form-container");
+const btnArrowRight = document.querySelector(".splide__arrow--next");
+const btnArrowLeft = document.querySelector(".splide__arrow--prev");
+const notifBar = document.querySelector("#notifBar");
+const uploadProgress = document.querySelector(".progress-bar");
+const progressContainer = document.querySelector("#progressContainer");
+
+function validate(inputBox) {
+    
+    if (inputBox.required === true) {
+        if (inputBox.value.length > 0) {
+            console.log("true");
+            return true;
+        } else {
+            console.log("false");
+            return false;
+        }
+    } else {
+        console.log("else");
+        return true
+    }
+
+}
+
+function showNotification (message) {
+    notifBar.classList.remove("hide");
+    notifBar.innerHTML = '<p>' + message + '</p><i class="fas fa-times-circle"></i>';
+}
+
+
+
+
+
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// Deleted
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+
+
 const questions = [
     {
         label: "What is your favorite board game?",
@@ -117,37 +162,6 @@ const states = `<option value=" ">Outside US</option>
                 <option value="WI">Wisconsin</option>
                 <option value="WY">Wyoming</option>
                 <option value=" ">Outside US</option>`;
-
-
-const formContainer = document.querySelector(".form-container");
-const questionInputs = document.querySelectorAll(".question-input");
-const btnArrowRight = document.querySelector(".splide__arrow--next");
-const btnArrowLeft = document.querySelector(".splide__arrow--prev");
-
-for ( let i = 0; i < questionInputs.length; i++) {
-    questionInputs[i].addEventListener("change", e => {
-        game[e.target.name] = e.target.value;
-    })
-}
-
-
-function validate(inputBox) {
-    console.log(inputBox);
-    if (inputBox.required === true) {
-        if (inputBox.value.length > 0) {
-            console.log("true");
-            return true;
-        } else {
-            console.log("false");
-            return false;
-        }
-    } else {
-        console.log("else");
-        return true
-    }
-
-
-}
 
 
 // loadQuestions(questions);
