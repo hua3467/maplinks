@@ -51,11 +51,36 @@ map.on('load', () => {
         }, 1000)
     }
 
-    loadGreenDots(gameData, greenCircles);
-    addListItem(".data-list", gameData);
+    loadData((data) => {
+        if (data) {
+            console.log(data);
+            loadPoints(data, greenCircles);
+            addListItem(".data-list", data);
+        } else {
+            console.log("No data found.");
+        }
+        
+    });
+
+    // loadDataByFilter("genre", "Strategic", data => {
+    //     if (data) {
+    //         console.log(data);
+    //         loadPoints(data, greenCircles);
+    //         addListItem(".data-list", data);
+    //     } else {
+    //         console.log("No data found.");
+    //     }
+    // });
+
+    listItemByKey("genre", data => {
+        console.log(data);
+    });
+    
 });
 
-// const data = db.ref("sodaa_alumni").once("value").then(snapshot => {
+
+
+// const data = db.ref("boardgamers").once("value").then(snapshot => {
 
 //     const data = snapshot.val();
 
@@ -128,7 +153,7 @@ map.on('load', () => {
 //     map.addLayer(greenCircles);
 // });
 
-function loadGreenDots(data, pointConfig){
+function loadPoints(data, pointConfig){
     let geoData = makeGeoData(data);
 
     map.addSource('people-data', {

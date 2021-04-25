@@ -1,18 +1,16 @@
-const dbDir = "boardgamers";
-
 const uploadImage = function (dataObj) {
     const imgFile = dataObj.image;
 
     console.log(dataObj);
 
-    const dataID = dataObj.pid ? dataObj.pid : dataObj.uid;
+    const dataID = dataObj.gid;
 
     if (typeof imgFile !== "string") {
 
         return new Promise((resolve, reject) => {
 
-            const fileName = dataID + imgFile.name.substring(imgFile.name.indexOf('.'));
-            const uploadTask = storage.ref().child(dbDir + '/' + fileName).put(imgFile);
+            const fileName = dataID + "_" + imgFile.name.substring(imgFile.name.indexOf('.'));
+            const uploadTask = storage.ref().child(dbName + '/' + fileName).put(imgFile);
 
             uploadProgress.style = `width: 0%`;
 
@@ -31,7 +29,7 @@ const uploadImage = function (dataObj) {
                 
                 uploadTask.snapshot.ref.getDownloadURL().then(url => {
 
-                    db.ref(dbDir + "image").set(url);
+                    db.ref(dbName + '/' + gid + "/image").set(url);
                     progressContainer.classList.add("hide");
                     dataObj.image = url;
                     console.log(dataObj);
@@ -55,13 +53,32 @@ function uploadData(dataObj) {
     };
     delete clearedData.image;
 
-    db.ref(dbDir).update(clearedData);
-    console.log(dataObj);
+    const userAddress = `${dataObj.city},${dataObj.state},${dataObj.country}`
+    console.log(userAddress);
+    geocode(userAddress, (error, {
+        coordinates,
+        location
+    } = {}) => {
 
-    if (dataObj.image === '') {
-        showNotification("#notifBar", `Your information is saved.`);
+        if (error) {
+            console.log(error);
+        }
+        clearedData["coordinates"] = coordinates;
+        clearedData["location"] = location;
+        db.ref(dbName + "/" + dataObj.gid).update(clearedData);
+        console.log(clearedData);
+    })
+    
+
+    if (dataObj.image) {
+        if (dataObj.image === '') {
+            showNotification("#notifBar", `Your information is saved.`);
+        } else {
+            uploadImage(dataObj);
+        }
     } else {
-        uploadImage(dataObj);
+        console.log("You did not add an image. The data is not saved.");
     }
+    
 
 };

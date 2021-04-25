@@ -19,7 +19,7 @@ btnNext.addEventListener("click", e => {
             } else if (!game.country || game.country.length < 1) {
                 alert("country is required.");
             } else {
-                
+                game.gid = Date.now();
                 uploadData(game);
             }
             questionIndex = allQuestions.length - 1;

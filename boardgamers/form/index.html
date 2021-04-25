@@ -80,7 +80,7 @@
                     <div class="valid-feedback">This is required.</div>
                 </div>
                 <div class="question hide form-group"><label class="text-lg" for="genres">6. What genres of board games
-                        do you usually play?</label><input name="genres" type=""
+                        do you usually play?</label><input name="genre" type=""
                         class="question-input full-width form-control-lg" spellcheck="false" data-ms-editor="true">
                     <div class="valid-feedback">This is required.</div>
                 </div>
@@ -104,8 +104,8 @@
                         <div class="valid-feedback">Please enter your city</div>
                     </div>
                     <div class="question">
-                        <label for="state" class="text-sm">State</label><select
-                            name="state" class="question-input full-width form-control-lg" required>
+                        <label for="state" class="text-sm">State</label>
+                        <select name="state" class="question-input full-width form-control-lg" required>
                             <option value=" ">Outside US</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -176,20 +176,27 @@
         </section>
     </main>
 
-
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+
+
     <script src="../public/js/dbConfig.js"></script>
     <script src="../public/splide/splide.min.js"></script>
+    <script src="../public/js/geocode.js"></script>
     <script src="js/util.js"></script>
     <script src="js/animation.js"></script>
     <script src="js/formConfig.js"></script>
-    <script src="../public/js/dataHandler.js"></script>
+    <script src="js/dataHandler.js"></script>
     <script src="js/index.js"></script>
 </body>
 

@@ -303,9 +303,14 @@ ul {
      margin: 0;
  }
 
- .genre-group .btn-sm {
+.genre-group .btn-sm {
     border-radius: 16px;
     height: 24px;
     padding: 4px 8px;
     line-height: 1em;
+    background: rgba(255, 255, 255, 0.516);
+}
+
+.genre-group .btn-sm:hover {
+    background: #212529;
 }

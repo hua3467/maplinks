@@ -57,6 +57,10 @@ const yellowCircles = {
     'filter': ['==', '$type', 'Point']
 }
 
+const colors = {
+    Strategic: "#ffcc00",
+    Mystery: "#006633"
+}
 
 /**
  * 
@@ -93,7 +97,7 @@ function makeGeoFeature(data) {
         type: "Feature"
     };
 
-    geoFeature.properties.color = data.type === "one" ? "#ffcc00" : "#006633";
+    geoFeature.properties.color = colors[data.genre];
 
     return geoFeature;
 };
@@ -103,7 +107,7 @@ function setPointColor(obj) {
 }
 
 
-const popup_HTML = function (featureObj) {
+function popup_HTML(featureObj) {
     console.log(featureObj);
     let container =
         `<div class="splide"><div class="splide__track"><ul class="splide__list">`;

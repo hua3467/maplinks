@@ -5,8 +5,7 @@ const geocode = (address, callback) => {
     .then( response => response.json())
     .then(data => {
             callback(undefined, {
-                latitude: data.features[0].center[1],
-                longtitude: data.features[0].center[0],
+                coordinates: data.features[0].center,
                 location: data.features[0].place_name
             });
     });
