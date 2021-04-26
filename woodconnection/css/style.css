@@ -400,3 +400,7 @@ td {
         max-width: 100% !important;
     }
 }
+
+.form-control {
+    margin-bottom: 20px;
+}

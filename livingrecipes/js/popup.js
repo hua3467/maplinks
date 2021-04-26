@@ -8,6 +8,6 @@ btnClost.addEventListener("click", e => {
 
 navBar.addEventListener("click", e => {
     btnClost.parentNode.classList.remove("hide");
-})
+});
 
 createRecipe(".pop-up", testData[0]);
