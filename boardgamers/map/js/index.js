@@ -1,13 +1,4 @@
-const loadPeopleList = function (peopleData) {
 
-    const peopleList = document.querySelector(".list ul");
-    peopleList.innerHTML = "";
-
-    peopleData.forEach(data => {
-        const property = data.properties;
-        addListItem(".list ul", property);
-    });
-};
 
 mapboxgl.accessToken =
     'pk.eyJ1IjoiYWF5YW5nIiwiYSI6ImNrY3RxeXp5OTBqdHEycXFscnV0czY4ajQifQ.jtVkyvY29tGsCZSQlELYDA';
@@ -17,6 +8,11 @@ var map = new mapboxgl.Map({
     center: [-96.790494, 46.875552],
     zoom: 10
 });
+
+var pointLayer = "end-points";
+var pointSource = "point-data";
+
+const genreFilter = document.querySelector(".genre-group");
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -62,44 +58,66 @@ map.on('load', () => {
         
     });
 
-    // loadDataByFilter("genre", "Strategic", data => {
-    //     if (data) {
-    //         console.log(data);
-    //         loadPoints(data, greenCircles);
-    //         addListItem(".data-list", data);
-    //     } else {
-    //         console.log("No data found.");
-    //     }
-    // });
+    genreFilter.append(buildDom({
+        type: "button",
+        props: {
+            className: "btn btn-outline-dark btn-sm",
+            innerHTML: "All Genres"
+        },
+        events: {
+            click: e => {
+                removePoints();
+                loadData((data) => {
+                    if (data) {
+                        console.log(data);
+                        loadPoints(data, greenCircles);
+                        addListItem(".data-list", data);
+                    } else {
+                        console.log("No data found.");
+                    }
+                    
+                });
+            }
+        }
+    }));
 
     listItemByKey("genre", data => {
-        console.log(data);
+        data.forEach( item => {
+            genreFilter.append(buildDom({
+                type: "button",
+                props: {
+                    className: "btn btn-outline-dark btn-sm",
+                    innerHTML: item
+                },
+                events: {
+                    click: e => {
+                        removePoints();
+                        loadDataByFilter("genre", item, data => {
+                            if (data) {
+                                console.log(data);
+                                loadPoints(data, greenCircles);
+                                addListItem(".data-list", data);
+                            } else {
+                                console.log("No data found.");
+                            }
+                        });
+                    }
+                }
+            }));
+        });
     });
     
 });
 
 
-function loadPoints(data, pointConfig){
-    let geoData = makeGeoData(data);
-
-    map.addSource('people-data', {
-        'type': 'geojson',
-        'data': geoData
-    });
-
-    map.addLayer(pointConfig);
-}
-
-
-
-map.on('click', 'people-end-points', function (e) {
+map.on('click', pointLayer, function (e) {
 
     if (document.querySelector(".splide")) {
         document.querySelector(".splide").remove();
     }
 
     var features = map.queryRenderedFeatures(e.point, {
-        layers: ['people-end-points']
+        layers: [pointLayer]
     });
 
     var feature = e.features[0];
@@ -118,3 +136,25 @@ map.on('click', 'people-end-points', function (e) {
         type: 'loop'
     }).mount();
 });
+
+
+
+function loadPoints(data, pointConfig){
+    let geoData = makeGeoData(data);
+
+    map.addSource(pointSource, {
+        'type': 'geojson',
+        'data': geoData
+    });
+
+    map.addLayer(pointConfig);
+}
+
+function removePoints() {
+    if (map.getLayer(pointLayer)) {
+        map.removeLayer(pointLayer);
+    }
+    if (map.getSource(pointSource)) {
+        map.removeSource(pointSource);
+    }
+}

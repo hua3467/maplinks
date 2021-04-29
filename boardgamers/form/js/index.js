@@ -10,7 +10,14 @@ allQuestions[0].classList.remove("hide");
 
 for ( let i = 0; i < questionInputs.length; i++) {
     questionInputs[i].addEventListener("change", e => {
-        game[e.target.name] = e.target.value;
+        if(e.target.name === "image") {
+            game[e.target.name] = e.target.files[0];
+            e.target.nextElementSibling.style = "display: none;";
+        } else {
+            game[e.target.name] = e.target.value;
+            e.target.nextElementSibling.style = "display: none;";
+        }
+        
     });
 }
 
@@ -18,17 +25,12 @@ btnNext.addEventListener("click", e => {
 
     if (questionIndex >= allQuestions.length - 1) {
         
-        if (!game.userCity || game.userCity.length < 1) {
-            alert("city is required.");
-        } else if (!game.userState || game.userState.length < 1) {
-            alert("state is required.");
-        } else if (!game.userCountry || game.userCountry.length < 1) {
-            alert("country is required.");
-        } else {
+        if (validate(allQuestions[questionIndex])) {
             game.gid = Date.now();
+            console.log(game);
             uploadData(game);
         }
-        questionIndex = allQuestions.length - 1;
+        questionIndex = allQuestions.length - 1;        
         
     } else {
 

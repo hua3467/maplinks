@@ -29,7 +29,7 @@ const uploadImage = function (dataObj) {
                 
                 uploadTask.snapshot.ref.getDownloadURL().then(url => {
 
-                    db.ref(dbName + '/' + gid + "/image").set(url);
+                    db.ref(dbName + '/' + dataID + "/image").set(url);
                     progressContainer.classList.add("hide");
                     dataObj.image = url;
                     console.log(dataObj);

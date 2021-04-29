@@ -48,7 +48,7 @@ const passwordValidate = function (password1, password2, callback) {
 function validateFileType(file){
     if (file) {
         var fileName = file.name;
-    console.log(fileName);
+    console.log(file);
     var idxDot = fileName.lastIndexOf(".") + 1;
     var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
     if (extFile=="jpg" || extFile=="jpeg" || extFile=="png" || extFile=="gif" || extFile=="svg"){

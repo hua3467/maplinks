@@ -8,29 +8,15 @@ const btnAddImg = document.querySelector("#btnAddImg");
 const inputFile = document.querySelector("#inputFile");
 const imagePreview = document.querySelector(".input-image-preview");
 
-const data = {
-    forward: "333",
-    gameName: "111",
-    genres: "Mystery",
-    image: "C:\\fakepath\\pexels-photo-370717.jpeg",
-    memory: "222",
-    pitch: "444",
-    preferGenre: "Mystery",
-    userCity: "Cincinnati",
-    userCountry: "United States",
-    userName: "666",
-    userState: "OH",
-    wanted: "555"
-}
 
 btnAddImg.addEventListener("click", e => {
     inputFile.click();
-    e.target.innerHTML = "Replace Image";
 });
 
 inputFile.addEventListener("change", e => {
     if (validateFileType(e.target.files[0]) && validateFileSize(e.target.files[0])) {
         readURL(imagePreview, e.target);
+        btnAddImg.innerHTML = "Replace Image";;
     } else {
         e.target.value = "";
     }
@@ -48,30 +34,34 @@ function readURL(preview, input) {
 
 /**
  * 
- * @param {Node} inputBoxes a form-group node that contains one or mutiple input elements with the class name of "question-input".
+ * @param {Node} inputBoxes a form-group node that contains one or mutiple input, select, or textarea elements
  * @returns Boolean
  */
 function validate(inputBoxes) {
 
     let result = true;
     for (let item of inputBoxes.children) {
-        
-        if (item.classList.contains("question-input")) {
-
-            console.log(item);
+ 
+        if (item.tagName == "INPUT" || item.tagName == "SELECT" || item.tagName == "TEXTAREA") {
 
             if (item.required === true) {
+
                 if (item.value.length > 0) {
-                    console.log("true");
-                    item.nextElementSibling.style = "display: none";
+                    if (item.nextElementSibling.classList.contains("valid-feedback")) {
+                        item.nextElementSibling.style = "display: none";
+                    }
+                    
                 } else {
-                    console.log("false");
-                    item.nextElementSibling.style = "display: block";
+                    if (item.nextElementSibling.classList.contains("valid-feedback")) {
+                        item.nextElementSibling.style = "display: block";
+                    }
                     result = false;
                 }
+
             } else {
-                console.log("not required");
-                item.nextElementSibling.style = "display: none";
+                if (item.nextElementSibling.classList.contains("valid-feedback")) {
+                    item.nextElementSibling.style = "display: none";
+                }
             }
 
         }
@@ -82,12 +72,11 @@ function validate(inputBoxes) {
     
 }
 
-function showNotification (message) {
-    notifBar.classList.remove("hide");
-    notifBar.innerHTML = '<p>' + message + '</p><i class="fas fa-times-circle"></i>';
+function showNotification (selector, message) {
+    const bar = document.querySelector(selector);
+    bar.classList.remove("hide");
+    bar.innerHTML = '<p>' + message + '</p><i class="fas fa-times-circle"></i>';
 }
-
-
 
 
 

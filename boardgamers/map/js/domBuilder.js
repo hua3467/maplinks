@@ -1,9 +1,9 @@
 function addListItem(targetSelector, dataSet) {
     const targetContainer = document.querySelector(targetSelector);
-
-    dataSet.forEach( data => {
-        targetContainer.append(createCard(data));
-    })
+    targetContainer.innerHTML = "";
+    for ( let key in dataSet ) {
+        targetContainer.append(createCard(dataSet[key]));
+    }
 
 }
 

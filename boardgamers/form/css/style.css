@@ -110,6 +110,9 @@ main {
     cursor: pointer;
     opacity: 1;
 }
+textarea {
+    height: 14em !important;
+}
 /* ------------------------------------- */
 /* ----------- public styles ----------- */
 /* ------------------------------------- */
@@ -146,6 +149,10 @@ label {
 .form-control-lg {
     border-color: blueviolet;
     border-width: 1px;
+}
+.valid-feedback {
+    color: rgb(247, 18, 144);
+    font-size: 1em;
 }
 
 

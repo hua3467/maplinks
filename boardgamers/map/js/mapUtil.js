@@ -15,9 +15,9 @@ const greenLines = {
 }
 
 const greenCircles = {
-    'id': 'people-end-points',
+    'id': 'end-points',
     'type': 'circle',
-    'source': 'people-data',
+    'source': 'point-data',
     'paint': {
         'circle-radius': 10,
         'circle-opacity': 0.6,
@@ -29,7 +29,10 @@ const greenCircles = {
 
 const colors = {
     Strategic: "#ffcc00",
-    Mystery: "#006633"
+    Mystery: "#006633",
+    Action: "#22aa00",
+    Strategic: "#aa33ee",
+    Puzzle: "#00ff88"
 }
 
 /**
