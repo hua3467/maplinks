@@ -32,16 +32,14 @@ btnNext.addEventListener("click", e => {
         
     } else {
 
-        if (validate(allQuestions[questionIndex].firstChild.nextSibling)) {
+        if (validate(allQuestions[questionIndex])) {
             questionIndex++;
             btnPrev.disabled = false;
             switchQuestion(questionIndex, 1);
             if (questionIndex === allQuestions.length - 1) {
                 e.target.innerHTML = "Submit";
             }
-        } else {
-            alert("this is required");
-        }
+        } 
         
     }
 

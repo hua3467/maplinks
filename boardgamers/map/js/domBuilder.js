@@ -4,7 +4,6 @@ function addListItem(targetSelector, dataSet) {
     dataSet.forEach( data => {
         targetContainer.append(createCard(data));
     })
-    
 
 }
 

@@ -50,52 +50,69 @@
         </section>
         <section class="form">
             <form class="form-container">
-                <div class="question form-group"><label class="text-lg" for="gameName">1. What is your favorite board
-                        game?</label><input name="gameName" type="text"
-                        class="question-input full-width form-control-lg" required spellcheck="false"
-                        data-ms-editor="true">
+                <div class="question form-group">
+                    <label class="text-lg" for="gameName">What is your favorite board game?</label>
+                    <input name="gameName" type="text"
+                    class="question-input full-width form-control-lg" required spellcheck="false"
+                    data-ms-editor="true">
+                    <div class="valid-feedback">This is required.</div>
+                    <br>
+                    <br>
+                    <label class="text-lg" for="genres">What genre is the board game?</label>
+                    <select name="genres" type="text" class="question-input full-width form-control-lg" required data-ms-editor="true">
+                        <option value="">Please select</option>
+                        <option value="Strategic">Strategic</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Puzzle">Puzzle</option>
+                        <option value="Chance">Chance</option>     
+                    </select>
                     <div class="valid-feedback">This is required.</div>
                 </div>
-                <div class="question hide form-group"><label class="text-lg" for="memory">2. What is your most
-                        memorable experience playing this game?</label><textarea name="memory"
-                        class="question-input full-width form-control-lg" required spellcheck="false"
-                        data-ms-editor="true" rows="5"></textarea>
+                <div class="question hide form-group">
+                    <label class="text-lg" for="memory">What is your most memorable experience playing this game?</label>
+                    <textarea name="memory" class="question-input full-width form-control-lg" required spellcheck="false" data-ms-editor="true" rows="5"></textarea>
                     <div class="valid-feedback">This is required.</div>
                 </div>
-                <div class="question hide form-group"><label class="text-lg" for="forward">3. What do you look forward
-                        to most in playing this game?</label><textarea name="forward"
-                        class="question-input full-width form-control-lg" spellcheck="false"
-                        data-ms-editor="true" rows="3"></textarea>
+                <div class="question hide form-group">
+                    <label class="text-lg" for="forward">What do you look forward to most in playing this game?</label>
+                    <textarea name="forward" class="question-input full-width form-control-lg" spellcheck="false" data-ms-editor="true" rows="3"></textarea>
                     <div class="valid-feedback">This is required.</div>
                 </div>
-                <div class="question hide form-group"><label class="text-lg" for="pitch">4. Give a short elevator pitch
-                        of how this game is played. OR Describe how the game is played in 10 words or
-                        less.</label><textarea name="pitch" class="question-input full-width form-control-lg"
-                        spellcheck="false" data-ms-editor="true" rows="3"></textarea>
+                <div class="question hide form-group">
+                    <label class="text-lg" for="pitch">Give a short elevator pitch of how this game is played. OR Describe how the game is played in 10 words or less.</label>
+                    <textarea name="pitch" class="question-input full-width form-control-lg" spellcheck="false" data-ms-editor="true" rows="3"></textarea>
                     <div class="valid-feedback">This is required.</div>
                 </div>
-                <div class="question hide form-group"><label class="text-lg" for="image">5. Share a picture of the
-                        game.</label><input name="image" type="file"
-                        class="question-input full-width form-control-lg">
+                <div class="question hide form-group">
+                    <label class="text-lg" for="image">Share a picture of the game.</label>
+                    <div class="input-image-preview">
+                        <div id="btnAddImg">Add Image</div>
+                    </div>
+                    <input name="image" type="file" id="inputFile" class="hide question-input full-width form-control-lg">
                     <div class="valid-feedback">This is required.</div>
                 </div>
-                <div class="question hide form-group"><label class="text-lg" for="genres">6. What genres of board games
-                        do you usually play?</label><input name="genre" type=""
-                        class="question-input full-width form-control-lg" spellcheck="false" data-ms-editor="true">
+                <div class="question hide form-group"><label class="text-lg" for="preferGenre">What genres of board games do you usually play?</label>
+                    <select name="preferGenre" type="text" class="question-input full-width form-control-lg" required data-ms-editor="true">
+                        <option value="">Please select</option>
+                        <option value="Strategic">Strategic</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Puzzle">Puzzle</option>
+                        <option value="Chance">Chance</option>     
+                    </select>
                     <div class="valid-feedback">This is required.</div>
                 </div>
-                <div class="question hide form-group"><label class="text-lg" for="wanted">7. Is there a board game you
+                <div class="question hide form-group"><label class="text-lg" for="wanted">Is there a board game you
                         would like to play, but haven’t had the chance yet?</label><input name="wanted" type=""
                         class="question-input full-width form-control-lg" spellcheck="false" data-ms-editor="true">
                     <div class="valid-feedback">This is required.</div>
                 </div>
-                <div class="question hide form-group"><label class="text-lg" for="userName">8. What's your
+                <div class="question hide form-group"><label class="text-lg" for="userName">What's your
                         name?</label><input name="userName" type="" class="question-input full-width form-control-lg"
                         spellcheck="false" data-ms-editor="true">
                     <div class="valid-feedback">This is required.</div>
                 </div>
                 <div class="hide form-group">
-                    <label class="text-lg">9. What is your location?</label>
+                    <label class="text-lg">What is your location?</label>
                     <div class="question">
                         <label for="userCity" class="text-sm">City</label>
                         <input name="userCity"
