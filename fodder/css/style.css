@@ -1,0 +1,31 @@
+:root {
+    --sidebar-width: 240px;
+    --color-primary: #ECD689;
+}
+
+body {
+    min-height: 100vh;
+}
+
+nav {
+    margin-bottom: 40px;
+    height: 56px;
+}
+
+nav img {
+    height: 36px;
+}
+
+#chart {
+    width: calc(100% - var(--sidebar-width) - 20px);
+    margin-right: 20px;
+    height: 500px;
+    overflow: visible;
+}
+
+footer {
+    height: 56px;
+    width: 100%;
+    background-color: var(--color-primary);
+    margin-top: 40px;
+}
