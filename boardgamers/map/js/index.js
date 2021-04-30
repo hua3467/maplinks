@@ -1,10 +1,14 @@
 
+const mapStyles = {
+    frank: "mapbox://styles/aayang/cko38a1bp00dx17qty93kzxla",
+    monochrome: 'mapbox://styles/aayang/ckfhnnlks0b7v19l7oxweshja'
+}
 
 mapboxgl.accessToken =
     'pk.eyJ1IjoiYWF5YW5nIiwiYSI6ImNrY3RxeXp5OTBqdHEycXFscnV0czY4ajQifQ.jtVkyvY29tGsCZSQlELYDA';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/aayang/ckfhnnlks0b7v19l7oxweshja',
+    style: mapStyles.frank,
     center: [-96.790494, 46.875552],
     zoom: 10
 });
@@ -51,6 +55,9 @@ map.on('load', () => {
         if (data) {
             console.log(data);
             loadPoints(data, greenCircles);
+            // data.forEach(item => {
+            //     addMarker(item);
+            // })
             addListItem(".data-list", data);
         } else {
             console.log("No data found.");
@@ -69,7 +76,6 @@ map.on('load', () => {
                 removePoints();
                 loadData((data) => {
                     if (data) {
-                        console.log(data);
                         loadPoints(data, greenCircles);
                         addListItem(".data-list", data);
                     } else {
@@ -83,27 +89,7 @@ map.on('load', () => {
 
     listItemByKey("genre", data => {
         data.forEach( item => {
-            genreFilter.append(buildDom({
-                type: "button",
-                props: {
-                    className: "btn btn-outline-dark btn-sm",
-                    innerHTML: item
-                },
-                events: {
-                    click: e => {
-                        removePoints();
-                        loadDataByFilter("genre", item, data => {
-                            if (data) {
-                                console.log(data);
-                                loadPoints(data, greenCircles);
-                                addListItem(".data-list", data);
-                            } else {
-                                console.log("No data found.");
-                            }
-                        });
-                    }
-                }
-            }));
+            genreFilter.append(filterGenreBtn(item));
         });
     });
     
@@ -115,6 +101,8 @@ map.on('click', pointLayer, function (e) {
     if (document.querySelector(".splide")) {
         document.querySelector(".splide").remove();
     }
+
+    console.log(e.target);
 
     var features = map.queryRenderedFeatures(e.point, {
         layers: [pointLayer]

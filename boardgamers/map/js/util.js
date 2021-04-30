@@ -5,3 +5,7 @@ const parseURL = function (url) {
     }
     return url;
 }
+
+function shortenText(str){
+    return str.substring(0, 100) + "...";
+}

@@ -102,3 +102,33 @@ function popup_HTML(featureObj) {
     container += `</ul></div></div>`
     return container;
 }
+
+function addMarker(markerData, popupModel) {    
+
+    let content =`<div class="row">
+                    <div class="col-4"><img class="user-photo" src="${markerData.image}"/></div>
+                    <div class="col-8">
+                    <h5>${markerData.gameName}</h5>
+                    <p>${markerData.genre}</p>
+                    <p>${markerData.pitch}</p>
+                    </div>
+                 </div>`;
+
+
+    // create the popup
+    var popup = new mapboxgl.Popup({
+        offset: 60
+    }).setHTML(content);
+
+    // create DOM element for the marker of User
+    var el = document.createElement('div');
+    el.className = 'marker';
+    el.style = `background-image: url(${markerData.image})`
+
+    // create the marker for User
+    var marker = new mapboxgl.Marker(el)
+        .setLngLat(markerData.coordinates)
+        .setOffset([0, -60])
+        .setPopup(popup)
+        .addTo(map);
+}

@@ -1,6 +1,7 @@
 :root {
     --side-width: 280px;
     --side-margin: 10px;
+    --side-bg-color: #8595C2;
     --primary-yellow: #ffcc00;
     --primary-green: #006633;
 }
@@ -60,7 +61,7 @@ aside {
     padding: 8px;
     right: 0;
     top: 0;
-    background: rgb(249, 240, 188);
+    background: var(--side-bg-color);
     flex: 0 0 var(--side-width);
     height: 100%;
     overflow-y: auto;
@@ -70,6 +71,51 @@ aside {
 
 aside .data-list {
     padding-top: 10px;
+}
+
+aside .card {
+    background: none;
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+}
+
+aside .card img {
+    margin: 16px;
+    margin-bottom: 0;
+}
+
+aside .excerpt a {
+    color: white;
+    text-decoration: underline;
+}
+
+aside .card-body {
+    position: relative;
+}
+
+aside .card-title {
+    margin-bottom: 4px;
+}
+aside .card-location {
+    margin-bottom: 16px !important;
+}
+
+aside .card-genre {
+    position: absolute;
+    top: -40px;
+    left: 30px;
+    border-radius: 16px;
+    height: 24px;
+    padding: 4px 8px;
+    line-height: 1em;
+    background: rgba(255, 255, 255, 0.92);
+}
+
+aside .card-genre:hover {
+    cursor: default;
+    background: rgba(255, 255, 255, 0.92);
+    color: black;
 }
 
 .header-title {
@@ -128,48 +174,6 @@ ul {
     padding-top: 1px;
     overflow-y: auto;
 }
-.ppl-card {
-    display: flex;
-    margin: 10px 10px 10px 10px;
-    padding: 8px;
-    border: 1px solid #d5d5d5;
-    background: white;
-    border-radius: 6px;
-}
-.ppl-card-header {
-}
-.ppl-card-cover {
-    height: 44px;
-    width: 44px;
-    border-radius: 50%;
-    border: 1px solid #006633;
-}
-.ppl-card-title {
-    margin-left: 10px;
-    width: 146px;
-}
-.ppl-card-title .ppl-name{
-    font-weight: 700;
-    margin-bottom: 4px;
-}
-
-.ppl-card-title a{
-    font-size: 0.7em;
-    padding: 2px 8px;
-    height: 22px;
-    background: #fff3c1;
-    color: #cb9100;
-    border-radius: 4px;
-}
-.ppl-card-title .title-link{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-.ppl-card-title .ppl-title {
-    font-size: 0.7em;
-    color: #888;
-}
 
 
 
@@ -185,29 +189,26 @@ ul {
     right: 0;
 }
 
-#RH_marker {
-    background-image: url('../images/Renaissance.jpg');
+.marker {
     background-size: cover;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 3px solid #006633;
+    border: 2px solid #9500ff;
     cursor: pointer;
-    box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
     z-index: 0;
 }
-#RH_marker:after {
+.marker:after {
     content: '';
 	position: absolute;
-	top: 0;
+	bottom: 3px;
 	left: 50%;
-	width: 0;
-	height: 0;
-	border: 15px solid transparent;
-	border-bottom-color: #006633;
-	border-top: 0;
-	margin-left: -15px;
-	margin-top: -13px;
+	width: 2px;
+	height: 35px;
+	background: linear-gradient(0deg, #ffffff00 0%, #aa00ff 50%);
+	border-bottom: 0;
+	margin-left: 0;
+    margin-bottom: -40px;
 }
 
 .mapboxgl-popup-content {
@@ -240,8 +241,7 @@ ul {
 .splide__arrow--prev {
     left: -3em;
 }
-.splide__pagination {
-}
+
 .splide__slide h4 {
     font-size: 1.5em;
     font-weight: bold;
@@ -305,6 +305,7 @@ ul {
 
 .genre-group .btn-sm {
     border-radius: 16px;
+    margin-right: 8px;
     height: 24px;
     padding: 4px 8px;
     line-height: 1em;

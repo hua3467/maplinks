@@ -1,3 +1,29 @@
+function filterGenreBtn(item) {
+    const btnElement = buildDom({
+        type: "button",
+        props: {
+            className: "btn btn-outline-dark btn-sm",
+            innerHTML: item
+        },
+        events: {
+            click: e => {
+                removePoints();
+                loadDataByFilter("genre", item, itemData => {
+                    if (itemData) {
+                        console.log(itemData);
+                        loadPoints(itemData, greenCircles);
+                        // addMarker(itemData);
+                        addListItem(".data-list", itemData);
+                    } else {
+                        console.log("No data found.");
+                    }
+                });
+            }
+        }
+    });
+    return btnElement;
+} 
+
 function addListItem(targetSelector, dataSet) {
     const targetContainer = document.querySelector(targetSelector);
     targetContainer.innerHTML = "";
@@ -28,6 +54,12 @@ function createCard(data){
         },
         children: [
             {
+                type: "p",
+                props: {
+                    className: "card-text card-genre btn btn-outline-dark btn-sm ",
+                    innerHTML: `${data.genre}`
+                }
+            },{
                 type: "h4",
                 props: {
                     className: "card-title",
@@ -36,32 +68,14 @@ function createCard(data){
             },{
                 type: "p",
                 props: {
-                    className: "card-text",
-                    innerHTML: data.memory
+                    className: "card-text text-sm card-location",
+                    innerHTML: `${data.location}`
                 }
             },{
                 type: "p",
                 props: {
-                    className: "card-text",
-                    innerHTML: `${data.userCity} ${data.userState} ${data.userCountry}`
-                }
-            },{
-                type: "p",
-                props: {
-                    className: "card-text",
-                    innerHTML: `${data.genre}`
-                }
-            },{
-                type: "p",
-                props: {
-                    className: "card-text",
-                    innerHTML: `${data.forward}`
-                }
-            },{
-                type: "p",
-                props: {
-                    className: "card-text",
-                    innerHTML: `${data.pitch}`
+                    className: "card-text excerpt",
+                    innerHTML: `<span>${shortenText(data.pitch)}</span> <a href="#" class="btn-view-more">View More</a>`
                 }
             }
         ]
