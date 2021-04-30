@@ -23,6 +23,10 @@ nav img {
     overflow: visible;
 }
 
+#chart svg {
+    overflow: visible;
+}
+
 footer {
     height: 56px;
     width: 100%;
