@@ -9,16 +9,12 @@
 Include the script to the document head
 
 ```html
-<!DOCTYPE html>
-<html>
+
 <head>
-  <title>SVG.js</title>
+    ...
   <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
 </head>
-<body>
 
-</body>
-</html>
 ```
 
 ### Bootstrap
@@ -50,11 +46,11 @@ Include the script to the document head
 
 ```html
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script> -->
+<!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script> -->
 ```

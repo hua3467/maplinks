@@ -404,3 +404,24 @@ td {
 .form-control {
     margin-bottom: 20px;
 }
+
+#introContent{
+    position: absolute;
+    padding-top: 10vh;
+    width: 80%;
+    max-width: 960px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+    color: white;
+}
+#introContent h1 {
+    font-size: 6em;
+    width: 100%;
+    text-align: center;
+}
+
+#introVideo {
+    transition: top 1s;
+}

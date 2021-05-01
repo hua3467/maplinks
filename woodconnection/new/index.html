@@ -306,72 +306,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
-    <!-- <script src="js/dbConfig.js"></script>
-
-    <script> let state = "login"; </script>
-
     
-
-    <script>
-        var projDesc = document.getElementById('projDesc');
-        var projDescCount = document.querySelector("#projDescCount");
-        var userAbout = document.querySelector(".user-info-about");
-        var userAboutCount = document.querySelector("#userAboutCount")
-        projDesc.addEventListener('keydown', e => {
-            check_words(e, projDescCount)
-        });
-        projDesc.addEventListener('keyup', e => {
-            check_words(e, projDescCount)
-        });
-        userAbout.addEventListener('keydown', e => {
-            check_words(e, userAboutCount)
-        });
-        userAbout.addEventListener('keyup', e => {
-            check_words(e, userAboutCount)
-        });
-
-        function check_words(e, countdown) {
-            var BACKSPACE = 8;
-            var DELETE = 46;
-            var MAX_WORDS = 150;
-            var valid_keys = [BACKSPACE, DELETE];
-            var words = e.target.value.split(' ');
-            if (words.length >= MAX_WORDS && valid_keys.indexOf(e.keyCode) == -1) {
-                countdown.classList.add("red");
-                countdown.innerHTML = (MAX_WORDS - words.length) + ' word remaining';
-                e.preventDefault();
-                words.length = MAX_WORDS;
-                this.value = words.join(' ');
-            } else {
-                countdown.classList.remove("red");
-                countdown.innerHTML = (MAX_WORDS - words.length) + ' words remaining';
-            }
-        }
-    </script>
-
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYWF5YW5nIiwiYSI6ImNrY3RxeXp5OTBqdHEycXFscnV0czY4ajQifQ.jtVkyvY29tGsCZSQlELYDA';
-
-
-        var projectgeocoder = new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            types: 'country,region,place,postcode,locality,neighborhood,address,poi',
-            placeholder: "Institution(optional), Street(optional), City, State, Country"
-        });
-        
-        projectgeocoder.addTo('#projectLocation');
-
-
-        // Get geocoder result.
-        projectgeocoder.on('result', function (e) {
-            console.log(e.result);
-        });
-
-        // Clear results container when search is cleared.
-        projectgeocoder.on('clear', function () {
-            
-        });
-    </script>
 
     <script src="js/util.js?v=1.0"></script>
     <script src="js/models.js"></script>
@@ -380,7 +315,7 @@
     <script src="js/light-form.js"></script>
     <script src="js/formHandler.js"></script>
     <script src="js/login.js?v=1.1"></script>
-    <script src="js/app.js"></script> -->
+    <script src="js/app.js"></script>
 </body>
 
 </html>
