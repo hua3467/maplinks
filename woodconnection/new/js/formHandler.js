@@ -1,6 +1,4 @@
-
 const formContainer = document.querySelector(".form-container");
-const notifBar = document.querySelector("#notifBar");
 const uploadProgress = document.querySelector(".progress-bar");
 const progressContainer = document.querySelector("#progressContainer");
 const btnAddImg = document.querySelector("#btnAddImg");
@@ -36,37 +34,45 @@ function readURL(preview, input) {
  * @param {Node} inputBoxes a form-group node that contains one or mutiple input, select, or textarea elements
  * @returns Boolean
  */
-function validate(inputBoxes) {
-
+function validateInputGroup(inputBoxes) {
     let result = true;
-    for (let item of inputBoxes.children) {
- 
-        if (item.tagName == "INPUT" || item.tagName == "SELECT" || item.tagName == "TEXTAREA") {
+    for (let item of inputBoxes) {
+        result = validateSingle(item);
+    }
+    return result;
+}
 
-            if (item.required === true) {
-
-                if (item.value.length > 0) {
-                    if (item.nextElementSibling.classList.contains("valid-feedback")) {
-                        item.nextElementSibling.style = "display: none";
-                    }
-                    
-                } else {
-                    if (item.nextElementSibling.classList.contains("valid-feedback")) {
-                        item.nextElementSibling.style = "display: block";
-                    }
-                    result = false;
-                }
-
-            } else {
-                if (item.nextElementSibling.classList.contains("valid-feedback")) {
-                    item.nextElementSibling.style = "display: none";
-                }
+/**
+ * 
+ * @param {Node} input the single input node that needs validate
+ * @returns Boolean
+ */
+function validateSingle(input) {
+    if (input.required === true) {
+        if (input.value.length > 0) {
+            if (input.nextElementSibling && input.nextElementSibling.classList.contains("valid-feedback")) {
+                input.nextElementSibling.remove();
             }
-
+            return true;
+        } else {
+            if (input.nextElementSibling && input.nextElementSibling.classList.contains("valid-feedback")) {
+                input.nextElementSibling.remove();
+            }
+            insertNodeAfter(input, buildDom({
+                type: "div",
+                props: {
+                    className: "valid-feedback",
+                    innerHTML: "This is required",
+                    style: "display: block"
+                }
+            }));
+            return false;
         }
 
+    } else {
+        if (input.nextElementSibling && input.nextElementSibling.classList.contains("valid-feedback")) {
+            input.nextElementSibling.remove();
+            return true;
+        }
     }
-
-    return result;
-    
 }

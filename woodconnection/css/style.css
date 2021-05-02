@@ -29,6 +29,33 @@ aside {
     box-shadow: 4px 4px 16px rgba(0,0,0,0.15);
 }
 
+/* ------------------------------------- */
+/* ------------ form styles ------------ */
+/* ------------------------------------- */
+
+.input-image-preview {
+    background: url("../assets/cover_image.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 300px;
+}
+#btnAddImg {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.235);
+    color: white;
+    padding-top: 120px;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+#btnAddImg:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
 #progressContainer {
     position: fixed;
     top: 0;
@@ -39,6 +66,13 @@ aside {
     z-index: 1000;
     padding: 45vh 10%;
     
+}
+
+label {
+    margin-top: 20px;
+}
+.form-control {
+    margin-bottom: 4px;
 }
 
 form {
@@ -399,10 +433,6 @@ td {
         line-height: 20px;
         max-width: 100% !important;
     }
-}
-
-.form-control {
-    margin-bottom: 20px;
 }
 
 #introContent{

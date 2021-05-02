@@ -6,23 +6,26 @@ function filterGenreBtn(item) {
             innerHTML: item
         },
         events: {
-            click: e => {
-                removePoints();
-                loadDataByFilter("genre", item, itemData => {
-                    if (itemData) {
-                        console.log(itemData);
-                        loadPoints(itemData, greenCircles);
-                        // addMarker(itemData);
-                        addListItem(".data-list", itemData);
-                    } else {
-                        console.log("No data found.");
-                    }
-                });
-            }
+            click: e => { clickGenreBtn(item) }
         }
     });
     return btnElement;
 } 
+
+function clickGenreBtn(item) {
+    console.log("click");
+    removePoints();
+    loadDataByFilter("genre", item, itemData => {
+        if (itemData) {
+            console.log(itemData);
+            loadPoints(itemData, greenCircles);
+            // addMarker(itemData);
+            addListItem(".data-list", itemData);
+        } else {
+            console.log("No data found.");
+        }
+    });
+}
 
 function addListItem(targetSelector, dataSet) {
     const targetContainer = document.querySelector(targetSelector);

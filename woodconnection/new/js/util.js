@@ -17,7 +17,7 @@
 
     if (node.events) {
         for ( key in node.events) {
-            ele.addEventListener( key, node.events[key]);
+            ele.addEventListener( key, node.events[key] );
         }
     }
 
@@ -30,6 +30,10 @@
     }
 
     return ele;
+}
+
+function insertNodeAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
 let isInputFilled = function(form){
