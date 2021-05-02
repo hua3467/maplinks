@@ -37,5 +37,4 @@ btnMap.addEventListener("click", () => {
     setTimeout(() => {
         videoPlayer.parentNode.remove();
     }, 1200);
-    
-})
+});

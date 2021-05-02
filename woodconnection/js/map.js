@@ -67,3 +67,19 @@ function parseGeoData(data) {
 
     return geoObj;
 };
+
+function createPopup(selector, data) {
+    const container = document.querySelector(selector);
+
+    container.append(buildDom({
+        type: "div",
+        props: {
+            style: popupStyle,
+            className: "point-popup",
+            innerHTML: data.name
+        },
+        events: {
+            click: clickEvent
+        }
+    }));
+}
