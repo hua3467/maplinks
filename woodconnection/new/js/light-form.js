@@ -9,6 +9,19 @@ const showNotification = function (container, message) {
     }
 }
 
+if (notifBar) {
+    notifBar.addEventListener("click", e => {
+        e.currentTarget.classList.add("hide");
+    });
+}
+
+window.addEventListener('beforeunload', e => {
+    if (!isUserInfoSubmitted) {
+        e.preventDefault();
+        e.returnValue = "Your information is not submitted. Are you sure you want to leave?";
+    }
+});
+
 const highlightForms = function (items) {
     items.forEach(item => {
         console.log(item.value);
@@ -17,17 +30,3 @@ const highlightForms = function (items) {
         }
     });
 };
-
-if (notifBar) {
-    notifBar.addEventListener("click", e => {
-        e.currentTarget.classList.add("hide");
-    });
-}
-
-
-window.addEventListener('beforeunload', e => {
-    if (!isUserInfoSubmitted) {
-        e.preventDefault();
-        e.returnValue = "Your information is not submitted. Are you sure you want to leave?";
-    }
-});

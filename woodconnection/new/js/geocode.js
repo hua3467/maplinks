@@ -4,7 +4,10 @@ const geocode = (address, callback) => {
     fetch(url)
     .then( response => response.json())
     .then(data => {
-            callback(undefined, data.features[0]);
+            callback(undefined, {
+                coordinates: data.features[0].center,
+                location: data.features[0].place_name
+            });
     });
 
 }

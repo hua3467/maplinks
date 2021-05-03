@@ -36,10 +36,12 @@ function readURL(preview, input) {
  */
 function validateInputGroup(inputBoxes) {
     let result = true;
+    let inputValidates = [];
     for (let item of inputBoxes) {
-        result = validateSingle(item);
+        inputValidates.push(validateSingle(item));
     }
-    return result;
+    console.log(inputValidates);
+    return !inputValidates.some( element => element === false);
 }
 
 /**
@@ -52,6 +54,8 @@ function validateSingle(input) {
         if (input.value.length > 0) {
             if (input.nextElementSibling && input.nextElementSibling.classList.contains("valid-feedback")) {
                 input.nextElementSibling.remove();
+                console.log("invalide")
+                
             }
             return true;
         } else {
@@ -72,7 +76,9 @@ function validateSingle(input) {
     } else {
         if (input.nextElementSibling && input.nextElementSibling.classList.contains("valid-feedback")) {
             input.nextElementSibling.remove();
-            return true;
+            console.log("not required")
+            
         }
+        return true;
     }
 }

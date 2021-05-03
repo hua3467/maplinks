@@ -217,8 +217,8 @@
                 <div class="col-8">
                     <div class="row">
                         <div class="col">
-                            <label for="woodType">Joint Name</label>
-                            <input type="text" class="form-control" required>
+                            <label for="jointName">Joint Name</label>
+                            <input type="text" class="form-control" name="jointName" required>
                         </div>
                     </div>
                     <div class="row">
@@ -229,20 +229,20 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="materialSource">How much time does it take?</label>
-                            <input type="text" class="form-control">
+                            <label for="time">How much time does it take?</label>
+                            <input type="text" class="form-control" name="time">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="learn">Skill required for this joint</label>
-                            <input type="text" class="form-control">
+                            <label for="requiredSkill">Skill required for this joint</label>
+                            <input type="text" class="form-control" name="requiredSkill">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="isInvent">The origin of the joint</label>
-                            <input type="text" class="form-control">
+                            <label for="origin">The origin of the joint</label>
+                            <input type="text" class="form-control" name="origin">
                         </div>
                     </div>
                 </div>
@@ -281,11 +281,10 @@
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
     <!-- <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script> -->
-    
+    <script src="js/geocode.js"></script>
+    <script src="js/dbConfig.js"></script>
 
     <script src="js/util.js?v=1.0"></script>
-    <!-- <script src="js/models.js"></script> -->
-    <script src="js/geocode.js"></script>
     <script src="js/datahandler.js"></script>
     <script src="js/light-form.js"></script>
     <script src="js/formHandler.js"></script>

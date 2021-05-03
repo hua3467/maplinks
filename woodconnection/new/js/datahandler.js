@@ -53,7 +53,7 @@ function uploadData(dataObj) {
     };
     delete clearedData.image;
 
-    const userAddress = `${dataObj.userCity},${dataObj.userState},${dataObj.userCountry}`
+    const userAddress = `${dataObj.userCity},${dataObj.userState},${dataObj.userCountry}`;
 
     geocode(userAddress, (error, {
         coordinates,
@@ -63,6 +63,7 @@ function uploadData(dataObj) {
         if (error) {
             console.log(error);
         }
+        console.log(userAddress, coordinates, location);
         clearedData["coordinates"] = coordinates;
         clearedData["location"] = location;
         db.ref(dbName + "/" + dataObj.gid).update(clearedData);

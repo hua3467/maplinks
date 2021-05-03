@@ -14,3 +14,4 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const storage = firebase.storage();
+const dbName = "woodconnection";
