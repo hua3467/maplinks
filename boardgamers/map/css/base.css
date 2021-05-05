@@ -1,0 +1,10 @@
+
+
+.hide {
+    display: none;
+}
+
+.btn-close:hover {
+    cursor: pointer;
+    background-color: var(--side-bg-color);
+}

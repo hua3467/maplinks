@@ -37,17 +37,11 @@ function createCard(data){
     const card = buildDom({
         type: "div",
         props: {
-            className: "card row"
+            className: "card row" 
         }
     });
 
     card.append(buildDom({
-        type: "img",
-        props: {
-            className: "card-img-top",
-            src: data.image
-        }
-    }), buildDom({
         type: "div",
         props: {
             className: "card-body"

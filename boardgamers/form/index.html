@@ -43,6 +43,7 @@
                             <li class="splide__slide chess-base-position">Slide 07</li>
                             <li class="splide__slide chess-base-position">Slide 08</li>
                             <li class="splide__slide chess-base-position">Slide 09</li>
+                            <li class="splide__slide chess-base-position blank-space">Slide 10</li>
                         </ul>
                     </div>
                 </div>
@@ -61,7 +62,7 @@
                     <select name="genres" type="text" class="question-input full-width form-control-lg" required
                         data-ms-editor="true">
                         <option value="">Please select</option>
-                        <option value="Strategic">Strategic</option>
+                        <option value="Strategy">Strategy</option>
                         <option value="Mystery">Mystery</option>
                         <option value="Puzzle">Puzzle</option>
                         <option value="Chance">Chance</option>
@@ -77,14 +78,13 @@
                 </div>
                 <div class="question hide form-group">
                     <label class="text-lg" for="forward">What do you look forward to most in playing this game?</label>
-                    <textarea name="forward" class="question-input full-width form-control-lg" spellcheck="false"
+                    <textarea name="forward" class="question-input full-width form-control-lg" required spellcheck="false"
                         data-ms-editor="true" rows="3"></textarea>
                     <div class="valid-feedback">This is required.</div>
                 </div>
                 <div class="question hide form-group">
-                    <label class="text-lg" for="pitch">Give a short elevator pitch of how this game is played. OR
-                        Describe how the game is played in 10 words or less.</label>
-                    <textarea name="pitch" class="question-input full-width form-control-lg" spellcheck="false"
+                    <label class="text-lg" for="pitch">Describe how the game is played in 10 words or less:</label>
+                    <textarea name="pitch" class="question-input full-width form-control-lg" required spellcheck="false"
                         data-ms-editor="true" rows="3"></textarea>
                     <div class="valid-feedback">This is required.</div>
                 </div>
@@ -110,13 +110,13 @@
                     <div class="valid-feedback">This is required.</div>
                 </div>
                 <div class="question hide form-group"><label class="text-lg" for="wanted">Is there a board game you
-                        would like to play, but haven’t had the chance yet?</label><input name="wanted" type=""
+                        would like to play, but haven’t had the chance yet? (Optional)</label><input name="wanted" type=""
                         class="question-input full-width form-control-lg" spellcheck="false" data-ms-editor="true">
                     <div class="valid-feedback">This is required.</div>
                 </div>
                 <div class="question hide form-group">
                     <label class="text-lg" for="userName">What's your name?</label>
-                    <input name="userName" type="" class="question-input full-width form-control-lg" spellcheck="false" data-ms-editor="true">
+                    <input name="userName" type="" class="question-input full-width form-control-lg" required spellcheck="false" data-ms-editor="true">
                     <div class="valid-feedback">This is required.</div>
                 </div>
                 <div class="hide form-group">

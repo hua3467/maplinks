@@ -77,11 +77,40 @@ function createCard(data){
             },{
                 type: "p",
                 props: {
-                    className: "card-text excerpt",
-                    innerHTML: `<span>${shortenText(data.pitch)}</span> <a href="#" class="btn-view-more">View More</a>`
-                }
+                    className: "card-text excerpt"
+                },
+                children: [
+                    {
+                        type: "span",
+                        props: {
+                            innerHTML: shortenText(data.pitch)
+                        }
+                    },
+                    {
+                        type: 'a',
+                        props: {
+                            innerHTML: "More",
+                            href: "#",
+                            className: "btn-view-more"
+                        },
+                        events: {
+                            click: e => { createPopupBox(".popup-content", data);}
+                        }
+                        
+                    }
+                ]
             }
         ]
     }));
     return card;
+}
+
+function createPopupBox(selector, data) {
+    const container = document.querySelector(selector);
+    const parent = container.parentNode;
+    if (parent.classList.contains("hide")) {
+        parent.classList.remove("hide");
+    }
+    container.innerHTML = "";
+    container.innerHTML = popupBoxBody(data);
 }

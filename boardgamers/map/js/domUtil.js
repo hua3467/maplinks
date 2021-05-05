@@ -32,3 +32,11 @@
     return ele;
 }
 
+const closeBtns = document.querySelectorAll(".btn-close");
+for(let i = 0; i < closeBtns.length; i++) {
+    closeBtns[i].addEventListener("click", e => {
+        console.log("clicked");
+        e.target.parentNode.classList.add("hide");
+    });
+}
+

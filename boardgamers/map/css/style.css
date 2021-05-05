@@ -2,6 +2,7 @@
     --side-width: 280px;
     --side-margin: 10px;
     --side-bg-color: #8595C2;
+    --side-bg-color-dark: #5d6c94;
     --primary-yellow: #ffcc00;
     --primary-green: #006633;
 }
@@ -314,4 +315,48 @@ ul {
 
 .genre-group .btn-sm:hover {
     background: #212529;
+}
+
+.popup-box {
+    position: absolute;
+    right: var(--side-width);
+    top: 0;
+    height: 100%;
+    width: 40%;
+    min-width: 400px;
+    max-width: 630px;
+    background-color: var(--side-bg-color-dark);
+    color: white;
+    z-index: 100;
+}
+
+.popup-box .btn-close {
+    font-size: 2em;
+    color: white;
+    padding: 10px;
+}
+
+.popup-img img {
+    width: 100%;
+}
+
+.popup-header {
+    border-bottom: 1px solid var(--side-bg-color);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+}
+
+.popup-content {
+    padding: 16px;
+    height: calc(100% - 52px);
+    overflow: auto;
+}
+
+.question {
+    font-weight: 800;
+    margin-bottom: 0.5em;
+}
+
+.answer {
+    margin-bottom: 2em;
 }

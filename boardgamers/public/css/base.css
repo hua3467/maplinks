@@ -1,3 +1,33 @@
+@font-face {
+    font-family: CaviarDreams;
+    src: url('../caviar_dreams/CaviarDreams.ttf');
+}
+@font-face {
+    font-family: CaviarDreams;
+    font-weight: bold;
+    src: url('../caviar_dreams/CaviarDreams_Bold.ttf');
+}
+
+:root {
+    --color-primary: #C58080;
+    --color-sedondary-dark: #5d6c94;
+    --color-warning: rgb(238, 68, 16);
+}
+
+h1 {
+    font-family: CaviarDreams, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-primary:hover {
+    background-color: var(--color-sedondary-dark);
+    border-color: var(--color-sedondary-dark);
+}
+
 #progressContainer {
     position: fixed;
     top: 0;

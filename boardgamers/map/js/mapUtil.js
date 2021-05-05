@@ -28,10 +28,9 @@ const greenCircles = {
 }
 
 const colors = {
-    Strategic: "#ffcc00",
     Mystery: "#006633",
     Action: "#22aa00",
-    Strategic: "#aa33ee",
+    Strategy: "#aa33ee",
     Puzzle: "#00ff88"
 }
 
