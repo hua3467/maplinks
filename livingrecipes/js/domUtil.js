@@ -32,3 +32,6 @@
     return ele;
 }
 
+function insertNodeAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}

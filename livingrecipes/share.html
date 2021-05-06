@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    
+
     <nav class="navbar navbar-light bg-light">
         <a href="map.html" class="btn">Back</a>
         <span class="navbar-brand mb-0 h1">Add my Recipe</span>
@@ -26,91 +26,93 @@
         <h3>Overview</h3>
         <div class="image-preview d-flex align-items-end" id="imagePreview">
             <div id="inputContainer" class="input-container">
-                <label for="image">Profile Image</label>
-                <input type="file" class="form-control-file profile-image user-info-items" name="image"
-                    id="fileImage" accept=".jpg,.jpeg,.png,.gif,.PJG,.JPEG,.PNG,.GIF,.svg,.SVG">
+                <label for="image">Recipe Image</label>
+                <input type="file" class="form-control-file profile-image user-info-items form-overview" name="image" id="fileImage"
+                    accept=".jpg,.jpeg,.png,.gif,.PJG,.JPEG,.PNG,.GIF,.svg,.SVG">
             </div>
         </div>
+        <br>
         <div class="form-group">
             <label for="recipeName">Recipe Name</label>
-            <input id="recipeName" name="recipeName" type="text" class="form-control form-control-lg">
+            <input id="recipeName" name="recipeName" type="text" class="form-control form-control-lg form-overview">
         </div>
         <div class="form-group">
             <label for="level">Difficulty Level</label>
-            <select id="level" name="level" class="form-control form-control-lg">
+            <select id="level" name="level" class="form-control form-control-lg form-overview">
                 <option value="" selected></option>
                 <option value="1">Easy</option>
                 <option value="2">Medium</option>
                 <option value="3">Hard</option>
             </select>
         </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" class="form-control form-control-lg form-overview"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="story">Tell me the story behind this recipe.</label>
+            <textarea id="story" name="story" class="form-control form-control-lg form-overview"></textarea>
+        </div>
+        <hr>
         <div class="form-group">
             <label for="userCity">Your City</label>
-            <input id="userCity" name="userCity" type="text" class="form-control form-control-lg">
+            <input id="userCity" name="userCity" type="text" class="form-control form-control-lg form-overview" required>
         </div>
-            <div class="row">
-                <div class="form-group col">
-                    <label>Your State</label>
-                    <select id="userState" name="userState" class="form-control form-control-lg">
-                      <option value="" selected></option>
-                      <option value=" ">Outside US</option>
-                      <option value="ND">North Dakota</option>
-                      <option value="SD">South Dakota</option>
-                    </select>
-                </div>
-                <div class="form-group col">
-                    <label for="userCountry">Your Country</label>
-                    <input id="userCountry" name="userCountry" type="text" class="form-control form-control-lg">
-                </div>
-            </div>
-        
         <div class="form-group">
-            <label for="history">History of Recipe</label>
-            <textarea id="history" name="history" class="form-control form-control-lg"></textarea>
-        </div> 
+            <label>Your State</label>
+            <select id="userState" name="userState" class="form-control form-control-lg form-overview">
+                <option value="" selected></option>
+                <option value=" ">Outside US</option>
+                <option value="ND">North Dakota</option>
+                <option value="SD">South Dakota</option>
+            </select>
+        </div>
         <div class="form-group">
-            <label for="frequence">How often do you cook this?</label>
-            <input type="text" id="frequence" name="frequence" class="form-control form-control-lg">
-        </div> 
-        <button type="button" class="btn btn-primary btn-lg btn-block btn-step" id="btnToIngredients" data-show="ingredients">Next</button>
+            <label for="userCountry">Your Country</label>
+            <input id="userCountry" name="userCountry" type="text" class="form-control form-control-lg form-overview">
+        </div>
+
+        <button type="button" class="btn btn-primary btn-lg btn-block btn-step" id="btnToIngredients"
+            data-show="ingredients">Next</button>
     </div>
 
     <div class="form container hide" id="ingredients">
         <h3>Ingredients</h3>
         <div class="col new-ingredient">
             <div class="form-group row flex-nowrap justify-content-between">
-                <input type="number" class="form-control col-3">
-                <input type="text" name="ingredientName" class="form-control col-6">
-                <button class="btn btn-outline-primary col-2">ADD</button>
+                <input type="text" name="ingredientName" id="newIngredient" class="form-control col-10" required>
+                <button class="btn btn-outline-primary col-2" id="btnAddIngredient">ADD</button>
             </div>
         </div>
-        
+
         <hr>
-        <div id="ingreList">
-            Ingredient List
+        <div id="ingredientList">
+            <ul class="container"></ul>
+            
         </div>
         <div class="col">
             <div class="btn-step-group row">
-                <button type="button" class="btn btn-outline-primary btn-lg col btn-step" id="btnToOverview" data-show="overview">Overview</button>
-                <button type="button" class="btn btn-primary btn-lg col btn-step" id="btnToStory" data-show="story">Add Story</button>
+                <button type="button" class="btn btn-outline-primary btn-lg col btn-step" id="btnBackToOverview"
+                    data-show="overview">Overview</button>
+                <button type="button" class="btn btn-primary btn-lg col btn-step" id="btnToInstructions"
+                    data-show="instructions">Instructions</button>
             </div>
         </div>
     </div>
 
-    <div class="form container hide" id="story">
-        <h3>Stories</h3>
+    <div class="form container hide" id="instructions">
+        <h3>Instructions</h3>
         <div class="form-group">
-            <label for="importance">What makes this recipe significant?</label>
-            <textarea name="importance" id="importance" rows="5"  class="form-control form-control-lg"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="change">Made changes at all?</label>
-            <textarea name="change" id="change" rows="5"  class="form-control form-control-lg"></textarea>
+            <label for="instructions">What makes this recipe significant?</label>
+            <textarea name="instructions" id="instructions" rows="5" class="form-control form-control-lg"></textarea>
         </div>
         <div class="col">
             <div class="btn-step-group row">
-                <button type="button" class="btn btn-outline-primary btn-lg col btn-step" id="btnReturnIngredients" data-show="ingredients">ViewIngredients</button>
-                <button type="button" class="btn btn-primary btn-lg col" id="btnFinish" data-show="finish">Finish</button>
+                <button type="button" class="btn btn-outline-primary btn-lg col btn-step" id="btnBackToIngredients"
+                    data-show="ingredients">ViewIngredients</button>
+                <button type="button" class="btn btn-primary btn-lg col" id="btnFinish"
+                    data-show="finish">Finish</button>
             </div>
         </div>
     </div>
@@ -122,9 +124,11 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
     <script src="js/util.js"></script>
+    <script src="js/domUtil.js"></script>
+    <script src="js/domBuilder.js"></script>
     <script src="js/formUtil.js"></script>
     <script src="js/form.js"></script>
-    
+
 </body>
 
 </html>
