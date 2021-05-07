@@ -4,21 +4,28 @@ const forms = document.querySelectorAll(".form");
 const inputUserImage = document.querySelector("#fileImage");
 const imagePreview = document.querySelector("#imagePreview");
 
+const overviewInputs = document.querySelectorAll(".form-overview");
+
 const btnAddIngredient = document.querySelector("#btnAddIngredient");
 const newIngredient = document.querySelector("#newIngredient");
-const ingredientContainer = document.querySelector("#ingredientList container");
+const btnAddStep = document.querySelector("#btnAddStep");
+const newStep = document.querySelector("#newStep");
 
-let recipe = {ingredients:[]};
+let recipe = {
+    ingredients: [],
+    instruction: []
+};
 
 for(let i = 0; i < stepBtns.length; i++) {
     stepBtns[i].addEventListener("click", e => {
         if (stepBtns[i].id === "btnToIngredients") {
-            if (validateInputGroup(document.querySelectorAll(".form-overview"))) {
+            if (validateInputGroup(overviewInputs)) {
                 for(let j = 0; j < forms.length; j++) {
                     if (!forms[j].classList.contains("hide")) {
                         forms[j].classList.add("hide");
                     }
                 }
+                
                 document.querySelector("#" + e.target.dataset.show).classList.remove("hide");
             };
         } else if (stepBtns[i].id === "btnToInstructions") {
@@ -58,17 +65,25 @@ inputUserImage.addEventListener("change", e => {
 btnAddIngredient.addEventListener("click", e => {
     if (validateSingle(newIngredient)) {
         recipe.ingredients.push(newIngredient.value);
-        addIngredient("#ingredientList ul", newIngredient.value);
+        addListedItem("#ingredientList ul", newIngredient.value, "ingredients");
         newIngredient.value = "";
     }
 });
 
-function addIngredient(selector, value) {
+btnAddStep.addEventListener("click", e => {
+    if (validateSingle(newStep)) {
+        recipe.ingredients.push(newStep.value);
+        addListedItem("#instructionList ul", newStep.value, "instruction");
+        newStep.value = "";
+    }
+});
+
+function addListedItem(selector, value, insertKey) {
     const container =  document.querySelector(selector);
     container.append(buildDom({
         type: "li",
         props: {
-            className: "ingredient-item d-flex justify-content-between",
+            className: "recipe-list-item d-flex justify-content-between",
         },
         children: [
             {
@@ -83,9 +98,9 @@ function addIngredient(selector, value) {
                 },
                 events: {
                     click: e => {
-                        for (let i = 0; i < recipe.ingredients.length; i++) {
-                            if (recipe.ingredients[i] === e.target.previousSibling.innerHTML) {
-                                recipe.ingredients.splice(i, 1);
+                        for (let i = 0; i < recipe[insertKey].length; i++) {
+                            if (recipe[insertKey][i] === e.target.previousSibling.innerHTML) {
+                                recipe[insertKey].splice(i, 1);
                             }
                         }
                         e.target.parentNode.remove();

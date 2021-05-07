@@ -43,17 +43,6 @@ var popup_sodaa = new mapboxgl.Popup({
     <a href="https://www.ndsu.edu/sodaa/" target="_blank" style="color: black">Visit Website</a>`
 );
 
-// create DOM element for the marker of SODAA
-// var el = document.createElement('div');
-// el.id = 'RH_marker';
-
-// create the marker for SODAA
-// new mapboxgl.Marker(el)
-//     .setLngLat([-96.790494, 46.875552])
-//     .setOffset([0, 50])
-//     .setPopup(popup_sodaa) // sets a popup on this marker
-//     .addTo(map);
-
 
 map.on('load', () => {
 
@@ -77,78 +66,7 @@ map.on('load', () => {
     loadGreenDots(testData);
 });
 
-// const data = db.ref("sodaa_alumni").once("value").then(snapshot => {
 
-//     const data = snapshot.val();
-
-//     let geoData = {
-//         features: [],
-//         type: "FeatureCollection"
-//     }
-
-//     for (id in data) {
-//         const feature = {
-//             geometry: {
-//                 coordinates: [data[id].longtitude, data[id].latitude],
-//                 type: "Point"
-//             },
-//             properties: {
-//                 about: data[id].about,
-//                 company: data[id].company,
-//                 fname: data[id].fname,
-//                 lname: data[id].lname,
-//                 major: data[id].major,
-//                 profileImage: data[id].profileImage,
-//                 title: data[id].title,
-//                 uid: id,
-//                 userCity: data[id].userCity,
-//                 userState: data[id].userState,
-//                 userCountry: data[id].userCountry,
-//                 website: data[id].website
-//             },
-//             type: "Feature"
-//         };
-//         geoData.features.push(feature);
-//     }
-
-//     lineLayer = {
-//         type: "FeatureCollection",
-//         features: []
-//     };
-//     geoData.features.forEach(feature => {
-
-//         const newFeature = {
-//             'type': 'Feature',
-//             'properties': {},
-//             'geometry': {
-//                 'type': 'LineString',
-//                 'coordinates': [
-//                     [-96.790494, 46.875552],
-//                     feature.geometry.coordinates
-//                 ]
-//             }
-//         }
-//         lineLayer.features.push(newFeature);
-//     });
-
-
-//     console.log("map loaded");
-
-//     // map.addSource('lines', {
-//     //     'type': 'geojson',
-//     //     'data': lineLayer
-//     // })；
-
-//     // map.addLayer(greenLines)
-
-//     map.addSource('people-data', {
-//         'type': 'geojson',
-//         'data': geoData
-//     });
-
-//     console.log(geoData);
-//     map.addLayer(greenCircles);
-// });
 
 function loadGreenDots(data){
     let geoData = {
