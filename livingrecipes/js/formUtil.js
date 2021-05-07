@@ -67,3 +67,21 @@ function validateList(listObj) {
     }
     return true;
 }
+
+
+const notifBar = document.querySelector("#notifBar");
+
+function showNotification(container, message) {
+    const bar = document.querySelector(container);
+    if (bar.classList.contains("hide")) {
+        bar.classList.remove("hide");
+        bar.innerHTML = '<p>' + message + '</p><i class="fas fa-times-circle"></i>';
+    }
+}
+
+if (notifBar) {
+    notifBar.addEventListener("click", e => {
+        e.currentTarget.classList.add("hide");
+    });
+}
+

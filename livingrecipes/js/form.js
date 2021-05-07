@@ -8,10 +8,11 @@ const overviewInputs = document.querySelectorAll(".form-overview");
 
 const btnAddIngredient = document.querySelector("#btnAddIngredient");
 const newIngredient = document.querySelector("#newIngredient");
-const btnAddStep = document.querySelector("#btnAddStep");
-const newStep = document.querySelector("#newStep");
+const btnAddInstruction = document.querySelector("#btnAddStep");
+const newInstruction = document.querySelector("#newStep");
 
 let recipe = {
+    id: Date.now(),
     ingredients: [],
     instruction: []
 };
@@ -25,7 +26,13 @@ for(let i = 0; i < stepBtns.length; i++) {
                         forms[j].classList.add("hide");
                     }
                 }
-                
+                for ( let input of overviewInputs) {
+                    if (input.name === "image") {
+                        recipe[input.name] = input.files[0];
+                    } else {
+                        recipe[input.name] = input.value;
+                    }
+                }
                 document.querySelector("#" + e.target.dataset.show).classList.remove("hide");
             };
         } else if (stepBtns[i].id === "btnToInstructions") {
@@ -51,7 +58,7 @@ for(let i = 0; i < stepBtns.length; i++) {
 }
 
 btnFinish.addEventListener("click", e => {
-    window.open("map.html");
+    uploadData(recipe);
 });
 
 inputUserImage.addEventListener("change", e => {
@@ -70,11 +77,11 @@ btnAddIngredient.addEventListener("click", e => {
     }
 });
 
-btnAddStep.addEventListener("click", e => {
-    if (validateSingle(newStep)) {
-        recipe.ingredients.push(newStep.value);
-        addListedItem("#instructionList ul", newStep.value, "instruction");
-        newStep.value = "";
+btnAddInstruction.addEventListener("click", e => {
+    if (validateSingle(newInstruction)) {
+        recipe.instruction.push(newInstruction.value);
+        addListedItem("#instructionList ul", newInstruction.value, "instruction");
+        newInstruction.value = "";
     }
 });
 

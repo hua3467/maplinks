@@ -1,16 +1,18 @@
 // Write Data
+const uploadProgress = document.querySelector(".progress-bar");
+const successContainer = document.querySelector(".success-container");
 function uploadImage(dataObj) {
     const imgFile = dataObj.image;
 
     console.log(dataObj);
 
-    const dataID = dataObj.gid;
+    const dataID = dataObj.id;
 
     if (typeof imgFile !== "string") {
 
         return new Promise((resolve, reject) => {
 
-            const fileName = dataID + "_" + imgFile.name.substring(imgFile.name.indexOf('.'));
+            const fileName = dataID + "_" + dataObj.recipeName + imgFile.name.substring(imgFile.name.indexOf('.'));
             const uploadTask = storage.ref().child(dbName + '/' + fileName).put(imgFile);
 
             uploadProgress.style = `width: 0%`;
@@ -31,7 +33,7 @@ function uploadImage(dataObj) {
                 uploadTask.snapshot.ref.getDownloadURL().then(url => {
 
                     db.ref(dbName + '/' + dataID + "/image").set(url);
-                    progressContainer.classList.add("hide");
+                    successContainer.classList.remove("hide");
                     dataObj.image = url;
                     console.log(dataObj);
                     showNotification("#notifBar", `Your information is saved.`);
@@ -66,7 +68,7 @@ function uploadData(dataObj) {
         }
         clearedData["coordinates"] = coordinates;
         clearedData["location"] = location;
-        db.ref(dbName + "/" + dataObj.gid).update(clearedData);
+        db.ref(dbName + "/" + dataObj.id).update(clearedData);
 
     });
     
