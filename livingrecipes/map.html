@@ -31,12 +31,12 @@
 
     <main>
         <header>
-            <div class="container">
+            <div class="">
                 <div class="search-bar d-flex justify-content-center">
                     <input type="text" class="form-control form-control-lg">
                     <a href="#" class="btn btn-lg search-icon"> <i class="fa fa-search"></i> </a>
                 </div>
-                
+
                 <div class="filter-bar">
                     <button type="button" class="btn btn-light btn-sm">Type One</button>
                     <button type="button" class="btn btn-light btn-sm">Type Two</button>
@@ -44,22 +44,29 @@
                     <button type="button" class="btn btn-light btn-sm">Type Four</button>
                 </div>
             </div>
-            
+
         </header>
 
         <div id="map"></div>
 
-        <div class="pop-up">
+        <div class="pop-up hide">
             <button type="button" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>
+            </button>
         </div>
 
         <div class="bottom-bar nav-bar">
-            <ul class="d-flex justify-content-around">
-                <li>Like</li>
-                <li>Home</li>
-                <li> <a href="share.html">Add</a></li>
+            <ul class="d-flex justify-content-around align-items-center">
+                <li>
+                    <a href="#"><img src="images/feather-home.png" alt="home"></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/feather-heart.png" alt="heart"></a>
+
+                </li>
+                <li> 
+                    <a href="share.html"><img src="images/feather-plus-square.png" alt="plus"></a>
+                </li>
             </ul>
         </div>
     </main>

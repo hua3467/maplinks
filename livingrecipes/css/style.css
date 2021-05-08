@@ -45,7 +45,7 @@ header {
 /*------------------------------------------*/
 
 .search-bar {
-    padding-top: 10px;
+    padding: 10px;
 }
 .search-bar input {
     width: 100%;
@@ -59,6 +59,7 @@ header {
 .filter-bar {
     padding-top: 10px;
     overflow-x: auto;
+    white-space: nowrap;
 }
 .filter-bar button {
     border: 1px solid #888;
@@ -111,13 +112,26 @@ header {
 .bottom-bar {
     position: fixed;
     height: 60px;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: white;
+    padding-top: 10px;
     z-index: 999;
-    border-radius: 12px;
-    box-shadow: 4px 4px 16px rgba(0,0,0,0.15);
+    border-top: 1px solid #eee;
+}
+
+.bottom-bar li {
+    list-style: none;
+}
+
+.bottom-bar a {
+    height: 44px;
+    width: 44px;
+}
+
+.bottom-bar img {
+    width: 36px
 }
 
 aside {
