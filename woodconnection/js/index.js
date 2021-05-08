@@ -9,8 +9,8 @@ mapboxgl.accessToken =
 var map = new mapboxgl.Map({
     container: 'map',
     style: mapStyles.frank,
-    center: [-96.790494, 46.875552],
-    zoom: 10
+    center: [-100.790494, 40.875552],
+    zoom: 3.4
 });
 
 var pointLayer = "end-points";
@@ -24,17 +24,87 @@ let coord = [Number(urlParams.get("log")), Number(urlParams.get("lat"))];
 
 console.log(coord);
 
-const videoPlayer = document.querySelector("#introVideo video");
-const btnMap = document.querySelector("#btnMap");
 
-videoPlayer.addEventListener("ended", () => {
-    console.log("ended")
-    //videoPlayer.parentNode.remove();
+map.on('load', () => {
+
+    if (queryString) {
+        document.querySelector("#introVideo").classList.add("hide");
+        setTimeout(() => {
+            map.flyTo({
+                center: coord,
+                zoom: 8,
+                bearing: 0,
+                speed: 1, // make the flying slow
+                curve: 1, // change the speed at which it zooms out
+                easing: function (t) {
+                    return t;
+                },
+                // this animation is considered essential with respect to prefers-reduced-motion
+                essential: true
+            });
+        }, 500)
+    } 
+
+    loadData((data) => {
+        if (data) {
+            console.log(data);
+            loadPoints(data, greenCircles);
+        } else {
+            console.log("No data found.");
+        }
+        
+    });
+    
 });
 
-btnMap.addEventListener("click", () => {
-    videoPlayer.parentNode.style = "top: -100vh";
-    setTimeout(() => {
-        videoPlayer.parentNode.remove();
-    }, 1200);
+
+map.on('click', pointLayer, function (e) {
+
+    if (document.querySelector(".splide")) {
+        document.querySelector(".splide").remove();
+    }
+
+    console.log(e.target);
+
+    var features = map.queryRenderedFeatures(e.point, {
+        layers: [pointLayer]
+    });
+
+    var feature = e.features[0];
+
+    var popup = new mapboxgl.Popup({
+            offset: [0, 0]
+        })
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML(popup_HTML(features))
+        .addTo(map);
+
+
+    new Splide('.splide', {
+        width: '100%',
+        height: '380px',
+        type: 'loop'
+    }).mount();
 });
+
+
+
+function loadPoints(data, pointConfig){
+    let geoData = makeGeoData(data);
+
+    map.addSource(pointSource, {
+        'type': 'geojson',
+        'data': geoData
+    });
+
+    map.addLayer(pointConfig);
+}
+
+function removePoints() {
+    if (map.getLayer(pointLayer)) {
+        map.removeLayer(pointLayer);
+    }
+    if (map.getSource(pointSource)) {
+        map.removeSource(pointSource);
+    }
+}

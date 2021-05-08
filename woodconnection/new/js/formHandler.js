@@ -1,6 +1,4 @@
 const formContainer = document.querySelector(".form-container");
-const uploadProgress = document.querySelector(".progress-bar");
-const progressContainer = document.querySelector("#progressContainer");
 const btnAddImg = document.querySelector("#btnAddImg");
 const inputFile = document.querySelector("#inputFile");
 const imagePreview = document.querySelector(".input-image-preview");

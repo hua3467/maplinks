@@ -35,60 +35,15 @@
         <div class="progress" style="height: 4px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0"
                 aria-valuemax="100" style="width: 0"></div>
+        </div><br>
+        <div class="success-container text-center hide" style="color:white">
+            <h4>Success!</h4>
+            <p>Your structure is saved successfully. You can find it on world map!</p>
+            <a href="../index.html" class="btn btn-primary btn-lg">Go to the Map</a>
         </div>
     </div>
 
     <main class="container">
-
-        <div class="login hide">
-            <div class="container row">
-                <div class="login-form col">
-                    <h3>Sign in</h3>
-                    <br>
-                    <label for="userID">Email Address</label>
-                    <input type="email" class="form-control user-id" name="userID" id="userID">
-                    <br>
-                    <label for="userPassword">Password</label>
-                    <input type="password" class="form-control user-id" name="userPassword" id="userPassword">
-                    <a href="forgetPW.html">Forget your password?</a>
-                    <br>
-                    <div class="auth-btn-container">
-                        <div></div>
-                        <button type="button" id="btnLogin" class="btn btn-success btn-auth">Start</button>
-                    </div>
-
-                </div>
-                <div class="col-1"></div>
-                <div class="signup-form col">
-                    <h3>Create an Account</h3>
-                    <br>
-                    <label for="userIDCreate">Email Address</label>
-                    <input type="email" class="form-control user-id" name="userIDCreate" id="userIDCreate">
-                    <br>
-                    <label for="userPasswordCreate">Password</label>
-                    <input type="password" class="form-control user-id" name="userPasswordCreate"
-                        id="userPasswordCreate">
-                    <br>
-                    <label for="userPasswordAgain">Reenter your Password</label>
-                    <input type="password" class="form-control user-id" name="userPasswordAgain" id="userPasswordAgain">
-                    <div class="auth-btn-container">
-                        <div></div>
-                        <button type="button" class="btn btn-success btn-auth" id="btnSignUp">Create Account</button>
-                    </div>
-
-                </div>
-
-                <br>
-                <br>
-            </div>
-            <div>
-                <br>
-                <br>
-                <a href="https://ndsusodaa.com/website-feedback-and-helps/" target="_blank">Need Helps?</a>
-                <br>
-            </div>
-        </div>
-
 
         <div id="notifBar" class="hide">
             <p></p><i class="fas fa-times-circle"></i>
@@ -96,7 +51,8 @@
 
 
         <div class="text-center">
-            <h2>The Wood Connection</h2>
+            <h1>THE TIMBER CONNECTION</h1>
+            <h3>Make a submission</h3>
         </div>
         <br>
         <div class="alert alert-warning" role="alert">
@@ -113,11 +69,12 @@
                 </div>
                 <div class="col-3">
                     <label for="name">Age</label>
-                    <input type="text" class="form-control" name="age">
+                    <input type="text" class="form-control required" name="age" required>
                 </div>
                 <div class="col-3">
                     <label for="level">Skill Level</label>
-                    <select name="level" id="level" class="form-control">
+                    <select name="level" id="level" class="form-control" required>
+                        <option></option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -205,10 +162,10 @@
             <br>
             <br>
 
-            <h3>About the Joint</h3>
+            <h3>About the wood structure</h3>
             <div class="row">
                 <div class="col-4">
-                    <label class="text-lg" for="image">Share a picture of the game.</label>
+                    <label class="text-lg" for="image">Share a picture of the structure.</label>
                     <div class="input-image-preview">
                         <div id="btnAddImg">Add Image</div>
                     </div>
@@ -217,31 +174,31 @@
                 <div class="col-8">
                     <div class="row">
                         <div class="col">
-                            <label for="jointName">Joint Name</label>
+                            <label for="jointName">Name of the structure:</label>
                             <input type="text" class="form-control" name="jointName" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="woodType">Wood Type</label>
-                            <input class="form-control" name="woodType" required>
+                            <label for="purpose">What is the use/purpose of the structure (Optional)?</label>
+                            <input type="text" class="form-control" name="purpose">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="time">How much time does it take?</label>
-                            <input type="text" class="form-control" name="time">
+                            <label for="woodType">What type of wood is used (Optional)?</label>
+                            <input class="form-control" name="woodType">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="requiredSkill">Skill required for this joint</label>
-                            <input type="text" class="form-control" name="requiredSkill">
+                            <label for="requiredTool">What are the main tools used to construct this (Optional)?</label>
+                            <input type="text" class="form-control" name="requiredTool">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="origin">The origin of the joint</label>
+                            <label for="origin">What is the cultural origin (Optional)?</label>
                             <input type="text" class="form-control" name="origin">
                         </div>
                     </div>
@@ -258,10 +215,10 @@
         </div>
 
         <footer class=" text-center">
-            <div class="">
+            <!-- <div class="">
                 <p>Copyright©2020, <a href="https://www.ndsu.edu/sodaa/">NDSU School of Design, Architecture and
                         Art</a>. All rights reserved.</p>
-            </div>
+            </div> -->
         </footer>
 
     </main>

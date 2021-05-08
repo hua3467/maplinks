@@ -1,3 +1,6 @@
+const uploadProgress = document.querySelector(".progress-bar");
+const successContainer = document.querySelector(".success-container");
+
 const uploadImage = function (dataObj) {
     const imgFile = dataObj.image;
 
@@ -30,7 +33,7 @@ const uploadImage = function (dataObj) {
                 uploadTask.snapshot.ref.getDownloadURL().then(url => {
 
                     db.ref(dbName + '/' + dataID + "/image").set(url);
-                    progressContainer.classList.add("hide");
+                    successContainer.classList.remove("hide");
                     dataObj.image = url;
                     console.log(dataObj);
                     showNotification("#notifBar", `Your information is saved.`);
