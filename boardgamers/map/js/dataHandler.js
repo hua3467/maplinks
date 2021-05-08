@@ -13,7 +13,7 @@ function listItemByKey(term, callback) {
 
 function loadData(callback){
     dbRef.once("value").then( snapshot => {
-        callback(Object.values(snapshot.val()).sort( (a, b) => a.userID > b.userID ? -1 : 1));
+        callback(Object.values(snapshot.val()).sort( (a, b) => a.gameName < b.gameName ? -1 : 1));
     }, error => {
         console.log("ERROR: " + error.code);
     });
