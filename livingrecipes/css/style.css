@@ -84,6 +84,7 @@ header {
     border-top-right-radius: 16px;
     box-shadow: 4px 4px 16px rgba(0,0,0,0.15);
     padding: 16px;
+    padding-top: 44px;
 }
 
 .pop-up .card {
@@ -91,6 +92,10 @@ header {
     margin: 0;
     height: 100%;
     overflow: auto;
+}
+
+.pop-up .card-body {
+    padding: 16px 8px !important;
 }
 
 .pop-up .close {
@@ -104,6 +109,23 @@ header {
     right: 0;
     z-index: 100;
     opacity: 1;
+}
+
+.list-text {
+    margin-left: 18px;
+    margin-right: 18px;
+    padding-left: 0;
+    margin-bottom: 40px;
+}
+
+.list-text li {
+    margin: 1em 0;
+}
+
+.section-title {
+    padding-top: 16px;
+    font-weight: bold;
+    border-top: 1px solid rgb(221, 221, 221);
 }
 
 /*------------------------------------------*/

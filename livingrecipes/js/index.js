@@ -1,19 +1,16 @@
-const loadPeopleList = function (peopleData) {
+const mapStyles = {
+    frank: "mapbox://styles/aayang/cko38a1bp00dx17qty93kzxla",
+    monochrome: 'mapbox://styles/aayang/ckfhnnlks0b7v19l7oxweshja'
+}
 
-    const peopleList = document.querySelector(".list ul");
-    peopleList.innerHTML = "";
-
-    peopleData.forEach(data => {
-        const property = data.properties;
-        addListItem(".list ul", property);
-    });
-};
+var pointLayer = "end-points";
+var pointSource = "point-data";
 
 mapboxgl.accessToken =
     'pk.eyJ1IjoiYWF5YW5nIiwiYSI6ImNrY3RxeXp5OTBqdHEycXFscnV0czY4ajQifQ.jtVkyvY29tGsCZSQlELYDA';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/aayang/ckgcmzhy5460a19k6r5duxm6h',
+    style: mapStyles.monochrome,
     center: [-96.790494, 46.875552],
     zoom: 10
 });
@@ -33,15 +30,7 @@ console.log(coord);
 // );
 // map.addControl(new mapboxgl.FullscreenControl());
 
-// Create icon and popup for SODAA
-// create the popup
-var popup_sodaa = new mapboxgl.Popup({
-    offset: 25
-}).setHTML(
-    `<iframe src="https://player.vimeo.com/video/458829008" width="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen class="sodaa-video"></iframe>
-    <h5>NDSU School of Design, Architecture and Art</h5>
-    <a href="https://www.ndsu.edu/sodaa/" target="_blank" style="color: black">Visit Website</a>`
-);
+
 
 
 map.on('load', () => {
@@ -63,78 +52,71 @@ map.on('load', () => {
         }, 500)
     } 
 
-    loadGreenDots(testData);
+    loadData((data) => {
+        if (data) {
+            console.log(data);
+            loadPoints(data, greenCircles);
+            // data.forEach(item => {
+            //     addMarker(item);
+            // })
+            //addListItem(".pop-up", data);
+        } else {
+            console.log("No data found.");
+        }
+        
+    });
 });
 
 
 
-function loadGreenDots(data){
-    let geoData = {
-        features: [],
-        type: "FeatureCollection"
-    }
+map.on('click', pointLayer, function (e) {
 
-    for (id in data) {
-            const feature = {
-                geometry: {
-                    coordinates: [data[id].longtitude, data[id].latitude],
-                    type: "Point"
-                },
-                properties: {
-                    about: data[id].about,
-                    company: data[id].company,
-                    fname: data[id].fname,
-                    lname: data[id].lname,
-                    major: data[id].major,
-                    profileImage: data[id].profileImage,
-                    title: data[id].title,
-                    uid: id,
-                    userCity: data[id].userCity,
-                    userState: data[id].userState,
-                    userCountry: data[id].userCountry,
-                    website: data[id].website,
-                    color: data[id].type === "one" ? "#ffcc00" : "#006633"
-                },
-                type: "Feature"
-            };
-            geoData.features.push(feature);
-        
-    }
+    var features = map.queryRenderedFeatures(e.point, {
+        layers: [pointLayer]
+    });
 
-    map.addSource('people-data', {
+    var feature = e.features[0];
+    
+    features[0].properties.ingredients = toStrArray(features[0].properties.ingredients);
+    features[0].properties.instruction = toStrArray(features[0].properties.instruction);
+    features[0].properties.coordinates = toNumArray(features[0].properties.coordinates);
+    createRecipe(".pop-up", features[0].properties);
+
+});
+
+
+
+function loadPoints(data, pointConfig){
+    let geoData = makeGeoData(data);
+
+    map.addSource(pointSource, {
         'type': 'geojson',
         'data': geoData
     });
 
-    console.log(geoData);
-    map.addLayer(greenCircles);
+    map.addLayer(pointConfig);
 }
 
-
-
-map.on('click', 'people-end-points', function (e) {
-
-    if (document.querySelector(".splide")) {
-        document.querySelector(".splide").remove();
+function removePoints() {
+    if (map.getLayer(pointLayer)) {
+        map.removeLayer(pointLayer);
     }
+    if (map.getSource(pointSource)) {
+        map.removeSource(pointSource);
+    }
+}
 
-    var features = map.queryRenderedFeatures(e.point, {
-        layers: ['people-end-points']
-    });
+function toStrArray(str) {
+    let newStr = str.replace("[\"", '');
+    newStr = newStr.replace("\"]", '');
+    newStr = newStr.split("\",\"");
+    return newStr;
+}
 
-    var feature = e.features[0];
-
-    var popup = new mapboxgl.Popup({
-            offset: [0, 0]
-        })
-        .setLngLat(feature.geometry.coordinates)
-        .setHTML(popup_HTML(features))
-        .addTo(map);
-
-
-    new Splide('.splide', {
-        width: '100%',
-        height: '360px',
-        type: 'loop'
-    }).mount();
-});
+function toNumArray(str) {
+    let newArr = str.replace("[", '');
+    newArr = newArr.replace("]", '');
+    newArr = newArr.split(",");
+    newArr = newArr.map( value => Number(value));
+    return newArr;
+}

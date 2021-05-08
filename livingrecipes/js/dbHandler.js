@@ -1,6 +1,7 @@
 // Write Data
 const uploadProgress = document.querySelector(".progress-bar");
 const successContainer = document.querySelector(".success-container");
+
 function uploadImage(dataObj) {
     const imgFile = dataObj.image;
 
@@ -103,7 +104,7 @@ function listItemByKey(term, callback) {
 
 function loadData(callback){
     dbRef.once("value").then( snapshot => {
-        callback(Object.values(snapshot.val()).sort( (a, b) => a.userID > b.userID ? -1 : 1));
+        callback(Object.values(snapshot.val()).sort( (a, b) => a.recipeName > b.recipeName ? -1 : 1));
     }, error => {
         console.log("ERROR: " + error.code);
     });
