@@ -1,28 +1,4 @@
-function createFilterTag(containerSelector, tagName) {
-    const container = document.querySelector(containerSelector);
-    container.append(buildDom({
-        type: "button",
-        props: {
-            className: "btn btn-outline-dark btn-sm",
-            innerHTML: tagName
-        },
-        events: {
-            click: e => { clickFilterTag(tagName) }
-        }
-    }));
-} 
 
-function clickFilterTag(item) {
-    console.log("click");
-    loadDataByFilter("genre", item, itemData => {
-        if (itemData) {
-            console.log(itemData);
-            
-        } else {
-            console.log("No data found.");
-        }
-    });
-}
 
 function addListItem(targetSelector, dataSet) {
     const targetContainer = document.querySelector(targetSelector);

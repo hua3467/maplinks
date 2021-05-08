@@ -1,3 +1,11 @@
+
+
+const notifBar = document.querySelector("#notifBar");
+const progress = document.querySelector(".progress");
+const uploadProgress = document.querySelector(".progress-bar");
+const progressContainer = document.querySelector("#progressContainer");
+const successContainer = document.querySelector(".success-container");
+
 const uploadImage = function (dataObj) {
     const imgFile = dataObj.image;
 
@@ -30,9 +38,10 @@ const uploadImage = function (dataObj) {
                 uploadTask.snapshot.ref.getDownloadURL().then(url => {
 
                     db.ref(dbName + '/' + dataID + "/image").set(url);
-                    progressContainer.classList.add("hide");
                     dataObj.image = url;
                     console.log(dataObj);
+                    progress.classList.add("hide");
+                    successContainer.classList.remove("hide");
                     showNotification("#notifBar", `Your information is saved.`);
 
                 });

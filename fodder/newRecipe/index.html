@@ -12,8 +12,8 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/rho1jgg.css">
 
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/style.css?v=0.1">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <style>
 
@@ -34,9 +34,11 @@
 
 
     <div id="progressContainer" class="hide">
-        <div class="progress" style="height: 4px;">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0"
-                aria-valuemax="100" style="width: 0"></div>
+
+        <div class="success-container text-center hide">
+            <h4>Success!</h4>
+            <p>Your recipe is saved successfully.</p>
+            <a href="map.html" class="btn btn-primary btn-lg">Explore Recipes</a>
         </div>
     </div>
 
@@ -106,44 +108,162 @@
         <div class="form-container">
 
             <h3>Submit a Recipe</h3>
-            <div id="start">
+            <div id="overview" class="form">
                 <div class="row">
-                    <label for="userName">User Name</label>
-                    <input type="text" class="form-control round-corner" name="userName" required>
-                </div>
-                <div class="row">
-                    <label for="recipeTitle">Recipe Title</label>
-                    <input type="text" class="form-control round-corner" name="recipeTitle">
-                </div>
-                <div class="row">
-                    <label for="difficulty">Difficulty</label>
-                    <input type="range" id="difficulty" name="difficulty" class="form-control round-corner" min="0" max="5" value="2.5" step="0.1">
+                    <div class="col">
+                        <div class="form-group row">
+                            <label for="userName">User Name</label>
+                            <input type="text" class="form-control round-corner form-overview" name="userName" required>
+                        </div>
+                        <div class="form-group row">
+                            <label for="recipeTitle">Recipe Title</label>
+                            <input type="text" class="form-control round-corner form-overview" name="recipeTitle">
+                        </div>
+                        <div class="form-group row">
+                            <label for="difficulty">Difficulty Level</label>
+                            <select id="difficulty" name="difficulty" class="form-control round-corner form-overview" required>
+                                <option value=""></option>
+                                <option value="0.5">0.5</option>
+                                <option value="1">1.0</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2.0</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3.0</option>
+                                <option value="3.5">3.5</option>
+                                <option value="4">4.0</option>
+                                <option value="4.5">4.5</option>
+                                <option value="5">5.0</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label for="story">Tell me the story behind this recipe.</label>
+                            <textarea id="story" name="story" class="form-control form-overview round-corner" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group row">
+                            <label for="type">Meal Type</label>
+                            <select name="type" id="type" class="form-control round-corner form-overview">
+                                <option value=""></option>
+                                <option value="Breakfast">Breakfast</option>
+                                <option value="Lunch">Lunch</option>
+                                <option value="Dinner">Dinner</option>
+                                <option value="Snack">Snack</option>
+                                <option value="Side Dish">Side Dish</option>
+                                <option value="Desserts">Desserts</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label for="selection">Food selection</label>
+                            <select name="selection" id="selection" class="form-control round-corner form-overview">
+                                <option value=""></option>
+                                <option value="Vegetarian">Vegetarian</option>
+                                <option value="Vegan">Vegan</option>
+                                <option value="Keto">Keto</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label for="culture">Culture</label>
+                            <select name="culture" id="culture" class="form-control round-corner form-overview">
+                                <option value=""></option>
+                                <option value="Asian">Asian</option>
+                                <option value="American">American</option>
+                                <option value="European">European</option>
+                                <option value="American">Hispanic</option>
+                                <option value="Middle-Eastern">Middle-Eastern</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label for="calories">Calories</label>
+                            <select name="calories" id="calories" class="form-control round-corner form-overview">
+                                <option value=""></option>
+                                <option value="High Calories">High Calories</option>
+                                <option value="Medium Calories">Medium Calories</option>
+                                <option value="Low Calories">Low Calories</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <br>
+
                 <div class="text-right btn-container">
-                    <button class="btn btn-primary" id="btnStart">Get Started</button>
+                    <button type="button" class="btn btn-primary col-4 btn-step round-corner"
+                        id="btnToInstructions" data-show="instructions">Add Instructions</button>
+                </div>
+
+            </div>
+
+            <div class="form container hide" id="instructions">
+                <div class="row">
+                    <div class="form-group col-6 time-container">
+                        <label for="time" class="col-12">Cooking Time: <span id="timeDisplay">- Minutes</span></label>
+                        <input type="range" id="time" name="time" class="form-range round-corner col-12" value="0" min="0" max="12.1" step="0.1">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <label class="row">Ingredients</label>
+                        <hr class="row">
+                        <div id="ingredientList" class="row">
+                            <h4>No ingredient has been added yet.</h4>
+                            <ul class="container"></ul>
+                        </div>
+                        
+                        <div class="new-ingredient form-group row">
+                            <input type="text" name="newIngredient" id="newIngredient" class="form-control col-12 round-corner instruction-input"
+                                placeholder="Ex: 1/4 cup lemon juice" required>
+                            <div class="btn-container text-right">
+                                <button class="btn btn-outline-primary btn-sm round-corner col-4"
+                                    id="btnAddIngredient">ADD</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col">
+    
+                        <label class="row">Instructions</label>
+                        <hr class="row">
+                        <div id="instructionList" class="row">
+                            <h4>No instruction has been added yet.</h4>
+                            <ol class="container"></ol>
+                        </div>
+    
+                            <div class="new-step form-group row">
+                                <textarea name="newInstruction" id="newInstruction" rows="5" class="form-control round-corner instruction-input"
+                                    style="margin-bottom: 16px" placeholder="Start to add a instruction step here." required></textarea>
+                                <div class="btn-container text-right">
+                                    <button class="btn btn-outline-primary col-4 round-corner btn-sm" id="btnAddStep">ADD Step</button>
+                                </div>  
+                            </div>
+    
+                        
+                    </div>
+                </div>
+            <br>   
+            <hr>
+            <div class="col">
+                <div class="btn-step-group row d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-primary col-4 btn-step round-corner"
+                        id="btnBackToOverview" data-show="overview">Back</button>
+                    <button type="button" class="btn btn-primary col-4 round-corner" id="btnFinish"
+                        data-show="finish">Submit</button>
                 </div>
             </div>
 
-
-            <div id="formRecipe">
-                
             </div>
-
-
-            
-            <br>
-            <hr>
-
 
         </div>
 
-        
+
 
     </main>
 
     <footer class=" text-center">
-        
+
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -168,7 +288,7 @@
     <script src="js/datahandler.js"></script>
     <script src="js/light-form.js"></script>
     <script src="js/formHandler.js"></script>
-    <script src="js/login.js?v=1.1"></script>
+    <!-- <script src="js/login.js?v=1.1"></script> -->
     <script src="js/app.js"></script>
 </body>
 

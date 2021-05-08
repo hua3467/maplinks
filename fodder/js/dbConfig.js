@@ -15,3 +15,4 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const storage = firebase.storage();
 const dbName = "fodder";
+const dbRef = db.ref(dbName);

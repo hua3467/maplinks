@@ -20,6 +20,15 @@
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0"
                 aria-valuemax="100" style="width: 0"></div>
         </div>
+        <div class="success-container text-center hide">
+            <img src="assets/images/success_icon.png" alt="">
+            
+            <h4>Thank you for sharing your board game experience!</h4>
+            <a class="btn btn-lg btn-map" href="../map/index.html">
+                <h5>WHAT DO OTHERS PLAY?</h5>
+                <p class="text-sm">View other players' responses on the map.</p>
+            </a>
+        </div>
     </div>
     <div id="notifBar" class="hide">
         <p></p><i class="fas fa-times-circle"></i>
@@ -58,16 +67,36 @@
                     <div class="valid-feedback">This is required.</div>
                     <br>
                     <br>
-                    <label class="text-lg" for="genres">What genre is the board game?</label>
-                    <select name="genres" type="text" class="question-input full-width form-control-lg" required
+                    <label class="text-lg" for="genre">What genre is the board game?</label>
+                    <select name="genre" type="text" class="question-input full-width form-control-lg" required
                         data-ms-editor="true">
                         <option value="">Please select</option>
                         <option value="Strategy">Strategy</option>
                         <option value="Mystery">Mystery</option>
                         <option value="Puzzle">Puzzle</option>
-                        <option value="Chance">Chance</option>
+                        <option value="Action Drafting">Action Drafting</option>
+                        <option value="Area Control">Area Control</option>
+                        <option value="Bluffing">Bluffing</option>
+                        <option value="Card Drafting">Card Drafting</option>
+                        <option value="Cooperative">Cooperative</option>
+                        <option value="Deckbuilding">Deckbuilding</option>
+                        <option value="Dexterity">Dexterity</option>
+                        <option value="Engine Building">Engine Building</option>
+                        <option value="Eurogame">Eurogame</option>
+                        <option value="Miniature">Miniature</option>
+                        <option value="Party">Party</option>
+                        <option value="Roleplaying">Roleplaying</option>
+                        <option value="Roll and Write">Roll and Write</option>
+                        <option value="Storytelling">Storytelling</option>
+                        <option value="Tile Placement">Tile Placement</option>
+                        <option value="Trading Card">Trading Card</option>
+                        <option value="Trick Taking">Trick Taking</option>
+                        <option value="Wargame">Wargame</option>
+                        <option value="Worker Placement">Worker Placement</option>
+                        <option value="Other">Other</option>
                     </select>
                     <div class="valid-feedback">This is required.</div>
+                    <p>Not sure? <a href="https://theboardgameguide.com/types-of-board-games/" target="_blank">Check this page for some examples.</a></p>
                 </div>
                 <div class="question hide form-group">
                     <label class="text-lg" for="memory">What is your most memorable experience playing this
@@ -102,12 +131,32 @@
                     <select name="preferGenre" type="text" class="question-input full-width form-control-lg" required
                         data-ms-editor="true">
                         <option value="">Please select</option>
-                        <option value="Strategic">Strategic</option>
+                        <option value="Strategy">Strategy</option>
                         <option value="Mystery">Mystery</option>
                         <option value="Puzzle">Puzzle</option>
-                        <option value="Chance">Chance</option>
+                        <option value="Action Drafting">Action Drafting</option>
+                        <option value="Area Control">Area Control</option>
+                        <option value="Bluffing">Bluffing</option>
+                        <option value="Card Drafting">Card Drafting</option>
+                        <option value="Cooperative">Cooperative</option>
+                        <option value="Deckbuilding">Deckbuilding</option>
+                        <option value="Dexterity">Dexterity</option>
+                        <option value="Engine Building">Engine Building</option>
+                        <option value="Eurogame">Eurogame</option>
+                        <option value="Miniature">Miniature</option>
+                        <option value="Party">Party</option>
+                        <option value="Roleplaying">Roleplaying</option>
+                        <option value="Roll and Write">Roll and Write</option>
+                        <option value="Storytelling">Storytelling</option>
+                        <option value="Tile Placement">Tile Placement</option>
+                        <option value="Trading Card">Trading Card</option>
+                        <option value="Trick Taking">Trick Taking</option>
+                        <option value="Wargame">Wargame</option>
+                        <option value="Worker Placement">Worker Placement</option>
+                        <option value="Other">Other</option>
                     </select>
                     <div class="valid-feedback">This is required.</div>
+                    <p>Not sure? <a href="https://theboardgameguide.com/types-of-board-games/" target="_blank">Check this page for some examples.</a></p>
                 </div>
                 <div class="question hide form-group"><label class="text-lg" for="wanted">Is there a board game you
                         would like to play, but haven’t had the chance yet? (Optional)</label><input name="wanted" type=""

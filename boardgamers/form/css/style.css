@@ -101,7 +101,7 @@ main {
 /* ------------------------------------- */
 
 .input-image-preview {
-    background: url("/form/assets/images/cover_image.png");
+    background: url("cover_image.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -124,6 +124,45 @@ main {
 }
 textarea {
     height: 14em !important;
+}
+
+.success-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-container img {
+    width: 200px;
+}
+
+.success-container h4 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.btn-map {
+    background: #C58080;
+    color: white;
+    padding: 10px 20px;
+}
+.btn-map h5 {
+    color: white;
+    margin: 0;
+}
+.btn-map p {
+    margin: 0;
+}
+
+.btn-map:hover {
+    color: white;
+    opacity: 0.9;
 }
 /* ------------------------------------- */
 /* ----------- public styles ----------- */
@@ -165,6 +204,10 @@ label {
 .valid-feedback {
     color: var(--color-warning);
     font-size: 1em;
+}
+
+#progressContainer {
+    background: #eee;
 }
 
 

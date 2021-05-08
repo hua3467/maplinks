@@ -1,3 +1,6 @@
+const uploadProgress = document.querySelector(".progress-bar");
+const successContainer = document.querySelector(".success-container");
+
 const uploadImage = function (dataObj) {
     const imgFile = dataObj.image;
 
@@ -47,38 +50,9 @@ const uploadImage = function (dataObj) {
 };
 
 function uploadData(dataObj) {
-
-    let clearedData = {
-        ...dataObj
-    };
-    delete clearedData.image;
-
-    const userAddress = `${dataObj.userCity},${dataObj.userState},${dataObj.userCountry}`;
-
-    geocode(userAddress, (error, {
-        coordinates,
-        location
-    } = {}) => {
-
-        if (error) {
-            console.log(error);
-        }
-        console.log(userAddress, coordinates, location);
-        clearedData["coordinates"] = coordinates;
-        clearedData["location"] = location;
-        db.ref(dbName + "/" + dataObj.gid).update(clearedData);
-
+    db.ref(dbName + "/" + dataObj.id).update(dataObj).then(data => {
+        progressContainer.classList.remove("hide");
+        successContainer.classList.remove("hide");
     });
-    
-
-    if (dataObj.image) {
-        if (dataObj.image === '') {
-            showNotification("#notifBar", `Your information is saved.`);
-        } else {
-            uploadImage(dataObj);
-        }
-    } else {
-        console.log("You did not add an image. The data is not saved.");
-    }
-    
+    showNotification("#notifBar", `Your information is saved.`);
 };

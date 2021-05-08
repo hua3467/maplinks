@@ -1,4 +1,5 @@
 function filterGenreBtn(item) {
+    console.log(item);
     const btnElement = buildDom({
         type: "button",
         props: {
@@ -13,7 +14,7 @@ function filterGenreBtn(item) {
 } 
 
 function clickGenreBtn(item) {
-    console.log("click");
+    console.log(item);
     removePoints();
     loadDataByFilter("genre", item, itemData => {
         if (itemData) {

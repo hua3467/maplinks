@@ -1,33 +1,31 @@
 const formContainer = document.querySelector(".form-container");
-const uploadProgress = document.querySelector(".progress-bar");
-const progressContainer = document.querySelector("#progressContainer");
-const btnAddImg = document.querySelector("#btnAddImg");
-const inputFile = document.querySelector("#inputFile");
-const imagePreview = document.querySelector(".input-image-preview");
+// const btnAddImg = document.querySelector("#btnAddImg");
+// const inputFile = document.querySelector("#inputFile");
+// const imagePreview = document.querySelector(".input-image-preview");
 
 
-btnAddImg.addEventListener("click", e => {
-    inputFile.click();
-});
+// btnAddImg.addEventListener("click", e => {
+//     inputFile.click();
+// });
 
-inputFile.addEventListener("change", e => {
-    if (validateFileType(e.target.files[0]) && validateFileSize(e.target.files[0])) {
-        readURL(imagePreview, e.target);
-        btnAddImg.innerHTML = "Replace Image";;
-    } else {
-        e.target.value = "";
-    }
-});
+// inputFile.addEventListener("change", e => {
+//     if (validateFileType(e.target.files[0]) && validateFileSize(e.target.files[0])) {
+//         readURL(imagePreview, e.target);
+//         btnAddImg.innerHTML = "Replace Image";;
+//     } else {
+//         e.target.value = "";
+//     }
+// });
 
-function readURL(preview, input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            preview.style = `background: url(${e.target.result}) #eee; background-size: contain; background-position: center top; background-repeat: no-repeat`;
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+// function readURL(preview, input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+//         reader.onload = function (e) {
+//             preview.style = `background: url(${e.target.result}) #eee; background-size: contain; background-position: center top; background-repeat: no-repeat`;
+//         }
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
 
 /**
  * 
@@ -35,7 +33,6 @@ function readURL(preview, input) {
  * @returns Boolean
  */
 function validateInputGroup(inputBoxes) {
-    let result = true;
     let inputValidates = [];
     for (let item of inputBoxes) {
         inputValidates.push(validateSingle(item));
