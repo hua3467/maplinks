@@ -1,3 +1,6 @@
+const videoPlayer = document.querySelector("#introVideo video");
+const btnMap = document.querySelector("#btnMap");
+const btnInfo = document.querySelector("#btnInfo");
 
 const mapStyles = {
     frank: "mapbox://styles/aayang/cko38a1bp00dx17qty93kzxla",
@@ -87,6 +90,18 @@ map.on('click', pointLayer, function (e) {
     }).mount();
 });
 
+btnMap.addEventListener("click", () => {
+    videoPlayer.parentNode.style = "top: -100vh";
+    setTimeout(() => {
+        videoPlayer.parentNode.remove();
+        btnInfo.classList.remove("hide");
+    }, 1200);
+    
+})
+
+btnInfo.addEventListener("click", e => {
+    location.reload();
+})
 
 
 function loadPoints(data, pointConfig){
