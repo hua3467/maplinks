@@ -46,9 +46,8 @@ function addListItem(targetSelector, data) {
 
 function createRecipe(targetSelector, data){
     const container =  document.querySelector(targetSelector);
-    console.log(data);
+    container.innerHTML = "";
     container.append(recipeHeader(data));
     container.append(recipeContent(data));
-
 }
 

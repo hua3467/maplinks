@@ -2,35 +2,36 @@ function recipeHeader(data) {
     return buildDom({
         type: "div",
         props: {
-            className: "recipe-header row"
+            className: "recipe-header"
         },
         children:[
             {
                 type: "div",
                 props: {
-                    className: "col-7"
+                    className: "row"
                 },
                 children: [
                     {
                         type: "h4",
                         props: {
+                            className: "col-8",
                             innerHTML: data.recipeName
                         }
-                    },
-                    {
+                    },{
                         type: "p",
                         props: {
-                            className: "text-small",
-                            innerHTML: data.location
+                            className: "col-4",
+                            innerHTML: "Level: " + data.level
                         }
                     }
+                    
                 ]
             },
             {
                 type: "p",
                 props: {
-                    className: "col-5",
-                    innerHTML: "Difficulty: " + data.level
+                    className: "text-small",
+                    innerHTML: data.location
                 }
             }
         ]
@@ -42,7 +43,7 @@ function recipeContent(data) {
         buildDom({
             type: "div",
             props: {
-                className: "card"
+                className: "card recipe-information"
             },
             children: [
                 {
@@ -120,4 +121,84 @@ function listItems(data, elementType) {
         htmlContent += `<${elementType}>${item}</${elementType}>`;
     });
     return htmlContent;
+}
+
+function recipeList(data) {
+    const btnBack = document.querySelector(".btn-back");
+    if (btnBack) {
+        btnBack.remove();
+    }
+    const ele = buildDom({
+        type: "div",
+        props: {
+            className: "recipe-list-container"
+        },
+        children: [{
+            type: "h5",
+            props: {
+                innerHTML: "RECIPES"
+            }
+        }]
+    });
+
+    data.forEach( item => {
+        ele.append(buildDom({
+            type: "div",
+            props: {
+                className: "card",
+            }, 
+            children: [
+                {
+                    type: "img",
+                    props: {
+                        className: "card-img-top",
+                        src: item.image
+                    }
+                },
+                {
+                    type: "div",
+                    props: {
+                        className: "card-body"
+                    },
+                    children: [
+                        
+                        {
+                            type: "p",
+                            props: {
+                                className: "card-text text-small",
+                                innerHTML: item.recipeName
+                            }
+                        }
+
+                    ]
+                }
+            ],
+            events: {
+                click: e => {
+                    document.querySelector(".pop-up").prepend(btnReturn(data))
+                    createRecipe(".popup-body", item);
+                }
+            }
+        }))
+    });
+
+    return ele;
+}
+
+function btnReturn(data) {
+    
+    return buildDom({
+        type: "p",
+        props: {
+            innerHTML: "Back",
+            className: "btn-back"
+        },
+        events: {
+            click: e => {
+                // TODO: instead of recreate the list, hide/show the list to save data transaction
+                popupBody.innerHTML = "";
+                popupBody.append(recipeList(data));
+            }
+        }
+    })
 }

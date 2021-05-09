@@ -1,6 +1,7 @@
 // Write Data
 const uploadProgress = document.querySelector(".progress-bar");
 const successContainer = document.querySelector(".success-container");
+const btnToMap = document.querySelector("#btnToMap");
 
 function uploadImage(dataObj) {
     const imgFile = dataObj.image;
@@ -71,6 +72,10 @@ function uploadData(dataObj) {
         clearedData["location"] = location;
         db.ref(dbName + "/" + dataObj.id).update(clearedData);
 
+        btnToMap.addEventListener("click", e => {
+            e.preventDefault();
+            window.open(`map.html?log=${coordinates[0]}\&lat=${coordinates[1]}`, "_self");
+        });
     });
     
 

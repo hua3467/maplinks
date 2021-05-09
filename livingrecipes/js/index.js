@@ -12,7 +12,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: mapStyles.monochrome,
     center: [-96.790494, 46.875552],
-    zoom: 10
+    zoom: 3
 });
 
 const queryString = window.location.search;
@@ -77,10 +77,21 @@ map.on('click', pointLayer, function (e) {
 
     var feature = e.features[0];
     
-    features[0].properties.ingredients = toStrArray(features[0].properties.ingredients);
-    features[0].properties.instruction = toStrArray(features[0].properties.instruction);
-    features[0].properties.coordinates = toNumArray(features[0].properties.coordinates);
-    createRecipe(".pop-up", features[0].properties);
+    
+
+    const selectedData = [];
+    features.forEach(item => {
+        item.properties.ingredients = toStrArray(item.properties.ingredients);
+        item.properties.instruction = toStrArray(item.properties.instruction);
+        item.properties.coordinates = toNumArray(item.properties.coordinates);
+        selectedData.push(item.properties);
+    })
+
+    console.log(selectedData);
+
+    popupBody.innerHTML = "";
+    popupBody.append(recipeList(selectedData));
+    popup.classList.remove("hide");
 
 });
 

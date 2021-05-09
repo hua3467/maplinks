@@ -73,8 +73,8 @@ header {
 /*------------------------------------------*/
 
 .pop-up {
-    height: calc(100% - 68px);
-    top: 68px;
+    height: calc(100% - 16px);
+    top: 16px;
     left: 16px;
     right: 16px;
     background: #ffffff;
@@ -87,10 +87,15 @@ header {
     padding-top: 44px;
 }
 
+.popup-body {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .pop-up .card {
     width: 100% !important;
     margin: 0;
-    height: 100%;
     overflow: auto;
 }
 
@@ -109,6 +114,17 @@ header {
     right: 0;
     z-index: 100;
     opacity: 1;
+}
+
+.recipe-information {
+}
+.recipe-list-container {
+    width: 100%;
+}
+.recipe-list-container .card {
+    width: calc(50% - 8px) !important;
+    margin-right: 8px;
+    display: inline-block;
 }
 
 .list-text {

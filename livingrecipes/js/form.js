@@ -11,6 +11,7 @@ const newIngredient = document.querySelector("#newIngredient");
 const btnAddInstruction = document.querySelector("#btnAddStep");
 const newInstruction = document.querySelector("#newStep");
 
+
 let recipe = {
     id: Date.now(),
     ingredients: [],
