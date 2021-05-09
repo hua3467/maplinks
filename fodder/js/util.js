@@ -1,39 +1,23 @@
-/**
- * 
- * @param {JSON} node 
- * @returns 
- */
- const buildDom = (node) => {
+const geocode = (address, callback) => {
+    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=pk.eyJ1IjoiYWF5YW5nIiwiYSI6ImNrY3RxeXp5OTBqdHEycXFscnV0czY4ajQifQ.jtVkyvY29tGsCZSQlELYDA`;
 
-    const ele = document.createElement(node.type);
+    fetch(url)
+    .then( response => response.json())
+    .then(data => {
+            callback(undefined, {
+                coordinates: data.features[0].center,
+                location: data.features[0].place_name
+            });
+    });
 
-    for ( key in node.props) {
-        if (key.substring(0, 5) === "data_") {
-            ele.dataset[key.substring(5)] = node.props[key]
-        } else {
-            ele[key] = node.props[key];
-        }
-    }
-
-    if (node.events) {
-        for ( key in node.events) {
-            ele.addEventListener( key, node.events[key] );
-        }
-    }
-
-    if (node.children) {
-  
-        node.children.forEach( child => {
-            const childEle = buildDom(child);
-            ele.append(childEle)
-        });
-    }
-
-    return ele;
 }
 
-function insertNodeAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+const parseURL = function(url) {
+    let pattern = /^((http|https|ftp):\/\/)/;
+    if(!pattern.test(url)) {
+        url = "https://" + url;
+    }
+    return url;
 }
 
 let isInputFilled = function(form){
@@ -52,7 +36,7 @@ const passwordValidate = function (password1, password2, callback) {
 function validateFileType(file){
     if (file) {
         var fileName = file.name;
-    console.log(file);
+    console.log(fileName);
     var idxDot = fileName.lastIndexOf(".") + 1;
     var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
     if (extFile=="jpg" || extFile=="jpeg" || extFile=="png" || extFile=="gif" || extFile=="svg"){
@@ -79,6 +63,11 @@ function validateFileSize(file) {
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
+
+function closePopup(target){
+    const box = document.querySelector(target).parentNode;
+    parentNode.classList.add("hide");
+}
 
 function convertHr(hour) {
     return hour > 1 ? hour  + " Hours" : hour * 60 + " Minutes";

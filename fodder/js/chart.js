@@ -1,10 +1,14 @@
 const chart = document.querySelector("#chart");
+var popup = document.querySelector(".pop-up");
+var popupBody = document.querySelector(".pop-up .container");
+var btnClose = document.querySelector(".pop-up .close");
+var btnAllRecipes = document.querySelector("#btnAllRecipes");
 
 const caloryLevel = ["Low Calories", "Medium Calories", "High Calories"];
 
 const maxHeight = chart.clientHeight - 80;
 const maxWidth = chart.clientWidth - 80;
-let maxTime = 7;
+let maxTime = 12;
 let maxDifficulty = 5;
 
 SVG.on(document, 'DOMContentLoaded', () => {
@@ -16,6 +20,14 @@ SVG.on(document, 'DOMContentLoaded', () => {
     loadData(data => {
         data.forEach(point => {
             createPoint(point);
+        });
+    });
+
+    btnAllRecipes.addEventListener("click", e => {
+        loadData(data => {
+            data.forEach(point => {
+                createPoint(point);
+            });
         });
     });
 
@@ -50,14 +62,15 @@ SVG.on(document, 'DOMContentLoaded', () => {
             fill: "#ffcc00"
         }).addClass("recipe-point");
         circle.click(() => {
-            console.log("clicked");
+            popupBody.innerHTML = recipeContent(point);
+            popup.classList.remove("hide");
         });
         circle.mouseover((e) => {
             console.log(`Prepare Time: ${point.time}h, Difficulty: ${point.difficulty}`);
         });
 
-        var name = draw.text(point.recipeTitle).move(point.time * (maxWidth / maxTime) - 60, (5 - point.difficulty) * (maxHeight / maxDifficulty) - 30).attr({
-            fill: "#aaaaaa",
+        var name = draw.text(`${point.recipeTitle}\nCooking Time: ${point.time}h, Level: ${point.difficulty}`).move(point.time * (maxWidth / maxTime) - 60, (5 - point.difficulty) * (maxHeight / maxDifficulty) - 60).attr({
+            fill: "#777",
             display: "none"
         }).addClass("recipe-name");
     }
@@ -87,6 +100,12 @@ SVG.on(document, 'DOMContentLoaded', () => {
             color: "black",
             width: 2
         });
+        var labelX = draw.text("Cooking Time").move(maxWidth/2-40, maxHeight+10).font({
+            fill: "black"
+        });
+        var labelY = draw.text("Difficulty").move(-50, maxHeight/2-30).rotate(-90).font({
+            fill: "black"
+        })
     }
 
     function createFilterTag(containerSelector, key, tagName) {
@@ -157,3 +176,7 @@ SVG.on(document, 'DOMContentLoaded', () => {
     }
 
 });
+
+btnClose.addEventListener("click", e => {
+    popup.classList.add("hide");
+})

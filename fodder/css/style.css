@@ -4,13 +4,16 @@
     --color-secondary: #44B6A0;
 }
 
-h1,
-h2,
-h3,
-h4 {
+body {
+    font-family: neue-kabel,sans-serif;
+    font-style: normal;
+}
+
+h1 {
     font-family: leksa-sans, sans-serif;
     font-style: normal;
 }
+
 
 h1, h2, h3 {
     font-weight: 800;
@@ -66,9 +69,46 @@ footer {
     display: block;
 }
 
+.recipe-point:hover {
+    cursor: pointer;
+
+}
+
 /* ------------------------------------- */
 /* ------------ form styles ------------ */
 /* ------------------------------------- */
 #start {
     width: 50%;
+}
+
+
+/* ------------------------------------- */
+/* ------------ popup styles ------------ */
+/* ------------------------------------- */
+.border-top {
+    border-top: 1px solid #aaa;
+}
+.border-bottom {
+    border-bottom: 1px solid #aaa;
+}
+.recipe-title p {
+    margin: 8px 0
+}
+
+.recipe-details .section-title {
+    margin-top: 80px;
+    padding-bottom: 8px;
+}
+
+.recipe-details ol,
+.recipe-details ul {
+    padding-left: 0;
+}
+
+.recipe-details li {
+    margin: 1em;
+}
+
+.recipe-story {
+    padding-top: 128px;
 }
