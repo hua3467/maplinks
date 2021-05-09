@@ -44,6 +44,8 @@ for(let i = 0; i < stepBtns.length; i++) {
                     }
                 }
                 document.querySelector("#" + e.target.dataset.show).classList.remove("hide");
+            } else {
+                alert("Please add some ingredients.")
             };
         } else {
             for(let j = 0; j < forms.length; j++) {
@@ -59,7 +61,13 @@ for(let i = 0; i < stepBtns.length; i++) {
 }
 
 btnFinish.addEventListener("click", e => {
-    uploadData(recipe);
+    
+    if (validateList(recipe.instruction)) {
+        uploadData(recipe);
+    } else {
+        alert("Please add your instructions.")
+    };
+    
 });
 
 inputUserImage.addEventListener("change", e => {

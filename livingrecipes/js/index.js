@@ -81,9 +81,14 @@ map.on('click', pointLayer, function (e) {
 
     const selectedData = [];
     features.forEach(item => {
-        item.properties.ingredients = toStrArray(item.properties.ingredients);
-        item.properties.instruction = toStrArray(item.properties.instruction);
+        if (item.properties.ingredients) {
+            item.properties.ingredients = toStrArray(item.properties.ingredients);
+        }
+        if (item.properties.instruction) {
+            item.properties.instruction = toStrArray(item.properties.instruction);
+        }
         item.properties.coordinates = toNumArray(item.properties.coordinates);
+        
         selectedData.push(item.properties);
     })
 

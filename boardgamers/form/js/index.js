@@ -23,11 +23,11 @@ for ( let i = 0; i < questionInputs.length; i++) {
 
 btnNext.addEventListener("click", e => {
 
+    console.log(game);
     if (questionIndex >= allQuestions.length - 1) {
         
         if (validate(allQuestions[questionIndex])) {
             game.gid = Date.now();
-            console.log(game);
             uploadData(game);
         }
         questionIndex = allQuestions.length - 1;        

@@ -116,10 +116,17 @@ function recipeContent(data) {
 }
 
 function listItems(data, elementType) {
-    let htmlContent = "";
-    data.forEach( item => {
-        htmlContent += `<${elementType}>${item}</${elementType}>`;
-    });
+    let htmlContent = "The user didn't provide this information.";
+    if (data) {
+        htmlContent = "";
+        data.forEach( item => {
+            if (item) {
+                htmlContent += `<${elementType}>${item}</${elementType}>`;
+            }
+            
+        });
+    }
+    
     return htmlContent;
 }
 

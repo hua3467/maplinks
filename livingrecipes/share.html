@@ -44,17 +44,17 @@
             <div id="inputContainer" class="input-container">
                 <label for="image">Recipe Image</label>
                 <input type="file" class="form-control-file profile-image user-info-items form-overview" name="image"
-                    id="fileImage" accept=".jpg,.jpeg,.png,.gif,.PJG,.JPEG,.PNG,.GIF,.svg,.SVG">
+                    id="fileImage" accept=".jpg,.jpeg,.png,.gif,.PJG,.JPEG,.PNG,.GIF,.svg,.SVG" required>
             </div>
         </div>
         <br>
         <div class="form-group">
             <label for="recipeName">Recipe Name</label>
-            <input id="recipeName" name="recipeName" type="text" class="form-control form-control-lg form-overview">
+            <input id="recipeName" name="recipeName" type="text" class="form-control form-control-lg form-overview" required>
         </div>
         <div class="form-group">
             <label for="level">Difficulty Level</label>
-            <select id="level" name="level" class="form-control form-control-lg form-overview">
+            <select id="level" name="level" class="form-control form-control-lg form-overview" required>
                 <option selected></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -66,11 +66,11 @@
 
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control form-control-lg form-overview"></textarea>
+            <textarea id="description" name="description" class="form-control form-control-lg form-overview" required></textarea>
         </div>
         <div class="form-group">
             <label for="story">Tell me the story behind this recipe.</label>
-            <textarea id="story" name="story" class="form-control form-control-lg form-overview"></textarea>
+            <textarea id="story" name="story" class="form-control form-control-lg form-overview" required></textarea>
         </div>
         <hr>
         <div class="form-group">
@@ -80,7 +80,7 @@
         </div>
         <div class="form-group">
             <label>Your State</label>
-            <select id="userState" name="userState" class="form-control form-control-lg form-overview">
+            <select id="userState" name="userState" class="form-control form-control-lg form-overview" required>
                 <option value=""></option>
                 <option value=" ">Outside US</option>
                 <option value="AL">Alabama</option>
@@ -139,7 +139,7 @@
         </div>
         <div class="form-group">
             <label for="userCountry">Your Country</label>
-            <input id="userCountry" name="userCountry" type="text" class="form-control form-control-lg form-overview">
+            <input id="userCountry" name="userCountry" type="text" class="form-control form-control-lg form-overview" required>
         </div>
 
         <button type="button" class="btn btn-primary btn-lg btn-block btn-step" id="btnToIngredients"
@@ -148,9 +148,9 @@
 
     <div class="form container hide" id="ingredients">
         <h3>Ingredients</h3>
-        <div class="col new-ingredient">
-            <div class="form-group row flex-nowrap justify-content-between">
-                <input type="text" name="ingredientName" id="newIngredient" class="form-control col-10" required>
+        <div class="new-ingredient">
+            <div class="form-group">
+                <input type="text" name="ingredientName" id="newIngredient" class="form-control col-10">
                 <button class="btn btn-outline-primary col-2" id="btnAddIngredient">ADD</button>
             </div>
         </div>
