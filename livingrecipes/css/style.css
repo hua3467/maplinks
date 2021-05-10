@@ -46,6 +46,9 @@ header {
 
 .search-bar {
     padding: 10px;
+    left: auto;
+    right: auto;
+    position: relative;
 }
 .search-bar input {
     width: 100%;
@@ -116,6 +119,15 @@ header {
     opacity: 1;
 }
 
+.pop-up .btn-back {
+    display: block;
+    width: 100px;
+}
+.pop-up .btn-back:hover {
+    cursor: pointer;
+    color:#777;
+}
+
 .recipe-information {
 }
 .recipe-list-container {
@@ -125,6 +137,10 @@ header {
     width: calc(50% - 8px) !important;
     margin-right: 8px;
     display: inline-block;
+}
+
+.recipe-list-container .card:hover {
+    cursor: pointer;
 }
 
 .list-text {
@@ -416,7 +432,35 @@ ul {
 .btn-step-group .btn {
     margin-right: 8px;
 }
-.bbtn-step-group .btn:last-child {
+.btn-step-group .btn:last-child {
     margin-right: 0;
 }
 
+@media screen and (min-width: 600px) {
+    .bottom-bar {
+        position: fixed;
+        height: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 16px;
+        max-width: 500px;
+        background: white;
+        padding-top: 10px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.308);
+    }
+
+    .pop-up {
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 720px;
+    }
+    header {
+        display: flex;
+        justify-content: center;
+    }
+    .search-bar {
+        width: 500px;
+    }
+}
